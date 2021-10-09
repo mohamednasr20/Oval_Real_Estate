@@ -1,7 +1,14 @@
 import React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import Navbar from './components/Navbar/Navbar';
 
 const App = () => {
-  return <div>hello world</div>;
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <Navbar />
+    </React.Fragment>
+  );
 };
 
 export default App;
