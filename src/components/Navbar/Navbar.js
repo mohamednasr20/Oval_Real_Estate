@@ -47,7 +47,7 @@ const Navbar = () => {
                   Rent
                 </Button>
                 <Button color="inherit" sx={{ marginRight: 2 }}>
-                  Home Loan
+                  Sold
                 </Button>
               </Box>
             )}
@@ -72,7 +72,10 @@ const Navbar = () => {
                   Help
                 </Button>
                 <Button
-                  sx={{ marginRight: 2 }}
+                  sx={{
+                    marginRight: 2,
+                    borderRadius: 15,
+                  }}
                   variant="contained"
                   color="primary"
                 >

@@ -50,8 +50,8 @@ const Header = () => {
         >
           <InputBase placeholder="Enter Address, zip, city" />
           <Button
-            sx={{ marginLeft: 'auto' }}
-            color="primary"
+            sx={{ marginLeft: 'auto', color: '#FFF', borderRadius: 15 }}
+            color="secondary"
             variant="contained"
           >
             Search

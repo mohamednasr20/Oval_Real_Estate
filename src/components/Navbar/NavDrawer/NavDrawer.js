@@ -35,7 +35,11 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
         <Button
           variant="contained"
           color="primary"
-          sx={{ marginTop: 2, marginX: 4 }}
+          sx={{
+            marginTop: 2,
+            marginX: 4,
+            borderRadius: 15,
+          }}
         >
           Sign up
         </Button>
