@@ -1,9 +1,6 @@
 import React from 'react';
 import SearchField from '../../SearchField/SearchField';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import Button from '@mui/material/Button';
 import {
   MainHeading,
   SecondaryHeading,
