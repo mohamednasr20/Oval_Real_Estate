@@ -21,7 +21,7 @@ export const SearchIconWrapper = styled('div')(({ theme }) => ({
   paddingLeft: theme.spacing(0.5),
   paddingRight: theme.spacing(0.5),
   color: theme.palette.common.white,
-  background: theme.palette.common.black,
+  background: theme.palette.text.primary,
   height: '100%',
   borderRadius: 8,
   position: 'absolute',
