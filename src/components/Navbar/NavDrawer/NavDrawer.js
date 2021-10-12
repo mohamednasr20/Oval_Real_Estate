@@ -2,18 +2,17 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
-import { MyDrawer } from './styles';
+import { MyDrawer, DrawerContent } from './styles';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
+  const theme = useTheme();
+  const matchMidScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <MyDrawer open={drawerOpen}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          padding: 2,
-        }}
-      >
+      <DrawerContent>
         <Box sx={{ marginLeft: 'auto' }}>
           <CloseIcon onClick={() => setDrawerOpen(false)} />
         </Box>
@@ -32,18 +31,20 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
         <Button color="inherit" sx={{ marginTop: 2 }}>
           Help
         </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
-            marginTop: 2,
-            marginX: 4,
-            borderRadius: 15,
-          }}
-        >
-          Sign up
-        </Button>
-      </Box>
+        {matchMidScreen && (
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              marginTop: 2,
+              marginX: 4,
+              borderRadius: 15,
+            }}
+          >
+            Sign up
+          </Button>
+        )}
+      </DrawerContent>
     </MyDrawer>
   );
 };

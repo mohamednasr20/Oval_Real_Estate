@@ -16,7 +16,8 @@ import { Search, SearchIconWrapper, StyledInputBase } from './styles';
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
-  const matcheSmallScreen = useMediaQuery(theme.breakpoints.down('lg'));
+  const matchSmallScreent = useMediaQuery(theme.breakpoints.up('sm'));
+  const matcheMidScreen = useMediaQuery(theme.breakpoints.down('lg'));
   const matcheLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
@@ -29,7 +30,7 @@ const Navbar = () => {
       >
         <Container>
           <Toolbar>
-            {matcheSmallScreen && (
+            {matcheMidScreen && (
               <Box>
                 <IconButton
                   size="large"
@@ -56,15 +57,15 @@ const Navbar = () => {
                 </Button>
               </Box>
             )}
-            <Search>
+            {/* <Search>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search location  …"
+                placeholder="Search location…"
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </Search>
+            </Search> */}
             <Box sx={{ margin: 'auto' }}>
               <img src={logo} alt="oval logo" />
             </Box>
@@ -76,22 +77,24 @@ const Navbar = () => {
                 <Button sx={{ marginRight: 2 }} color="inherit">
                   Help
                 </Button>
-                <Button
-                  sx={{
-                    marginRight: 2,
-                    borderRadius: 15,
-                  }}
-                  variant="contained"
-                  color="primary"
-                >
-                  Sign Up
-                </Button>
               </Box>
+            )}
+            {matchSmallScreent && (
+              <Button
+                sx={{
+                  marginRight: 2,
+                  borderRadius: 15,
+                }}
+                variant="contained"
+                color="primary"
+              >
+                Sign Up
+              </Button>
             )}
           </Toolbar>
         </Container>
       </AppBar>
-      {matcheSmallScreen && (
+      {matcheMidScreen && (
         <NavDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
       )}
     </Box>
