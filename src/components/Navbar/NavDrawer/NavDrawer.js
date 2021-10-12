@@ -1,18 +1,20 @@
 import React from 'react';
+import Drawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
-import { MyDrawer, DrawerContent } from './styles';
+import useStyles from './styles';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
   const theme = useTheme();
+  const classes = useStyles();
   const matchMidScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <MyDrawer open={drawerOpen}>
-      <DrawerContent>
+    <Drawer className={classes.root} open={drawerOpen}>
+      <Box className={classes.drawerList}>
         <Box sx={{ marginLeft: 'auto' }}>
           <CloseIcon onClick={() => setDrawerOpen(false)} />
         </Box>
@@ -44,8 +46,8 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
             Sign up
           </Button>
         )}
-      </DrawerContent>
-    </MyDrawer>
+      </Box>
+    </Drawer>
   );
 };
 

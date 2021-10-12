@@ -1,18 +1,20 @@
-import { styled } from '@mui/material/styles';
-import Drawer from '@mui/material/Drawer';
+import { makeStyles } from '@mui/styles';
 
-export const MyDrawer = styled(Drawer)(({ theme }) => ({
-  flexShrink: 0,
-  [`& .MuiDrawer-paper`]: {
-    width: '70%',
-    paddingTop: 2,
-    background: 'dark',
-    zIndex: 3,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexShrink: 0,
+    [`& .MuiDrawer-paper`]: {
+      width: '70%',
+      paddingTop: 2,
+      background: 'dark',
+      zIndex: 3,
+    },
+  },
+  drawerList: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: theme.spacing(2),
   },
 }));
 
-export const DrawerContent = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  padding: theme.spacing(2),
-}));
+export default useStyles;

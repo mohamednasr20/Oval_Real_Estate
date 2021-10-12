@@ -1,44 +1,69 @@
 import React from 'react';
 import SearchField from '../../SearchField/SearchField';
 import Box from '@mui/material/Box';
-import {
-  MainHeading,
-  SecondaryHeading,
-  Subtitle,
-  TextWrapper,
-  ImageBox,
-} from './styles';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import lgHeader from '../../../assets/header.png';
 import tabletHeader from '../../../assets/headerTablet.png';
 import mobileHeader from '../../../assets/headerMobile.png';
+import useStyles from './styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
 const Header = () => {
   const theme = useTheme();
+  const classes = useStyles();
   const lgScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const tabletScreen = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <Box sx={{ position: 'relative' }}>
-      <TextWrapper>
-        <SecondaryHeading variant="h4" color="primary">
-          Find out a place
-        </SecondaryHeading>
-        <MainHeading variant="h4" color="primary">
-          You'll love to live
-        </MainHeading>
-        <Subtitle variant="subtitle2">
-          With the most complete source of homes for sale & real estate near you
-        </Subtitle>
-        <SearchField />
-      </TextWrapper>
-      <ImageBox>
+      <Container>
+        <Box className={classes.TextWrapper}>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 400,
+              fontSize: { sx: 32, sm: 42, lg: 48 },
+              marginTop: 1,
+            }}
+            color="primary"
+          >
+            Find out a place
+          </Typography>
+
+          <Typography
+            variant="h4"
+            color="primary"
+            sx={{
+              fontWeight: 700,
+              fontSize: {
+                sx: 32,
+                sm: 42,
+                lg: 48,
+              },
+            }}
+          >
+            You'll love to live
+          </Typography>
+          <Typography
+            className={classes.subtitle}
+            variant="subtitle2"
+            sx={{ fontWeight: 400, fontSize: { xs: 14, sm: 16, lg: 18 } }}
+          >
+            With the most complete source of homes for sale & real estate near
+            you
+          </Typography>
+          <SearchField />
+        </Box>
+      </Container>
+
+      <Box className={classes.imgBox}>
         <img
           style={{ width: '100%', maxHeight: '100%' }}
           src={lgScreen ? lgHeader : tabletScreen ? tabletHeader : mobileHeader}
           alt="header_img"
         />
-      </ImageBox>
+      </Box>
     </Box>
   );
 };

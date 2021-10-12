@@ -1,15 +1,27 @@
 import React from 'react';
 import InputBase from '@mui/material/InputBase';
-import { SearchButton, SearchWrapper } from './styles';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import useStyles from './styles';
 
 const SearchField = () => {
+  const classes = useStyles();
   return (
-    <SearchWrapper component="form">
+    <Paper className={classes.root} component="form">
       <InputBase sx={{ padding: 1 }} placeholder="Enter Address, zip, city" />
-      <SearchButton color="secondary" variant="contained">
+      <Button
+        sx={{
+          marginLeft: 'auto',
+          color: '#FFF',
+          borderRadius: 15,
+          width: { xs: '100%', sm: 'auto' },
+        }}
+        color="secondary"
+        variant="contained"
+      >
         Search
-      </SearchButton>
-    </SearchWrapper>
+      </Button>
+    </Paper>
   );
 };
 

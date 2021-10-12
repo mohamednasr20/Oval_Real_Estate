@@ -8,14 +8,15 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
 import logo from '../../assets/logo.png';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Search, SearchIconWrapper, StyledInputBase } from './styles';
-
+import useStyles from './styles';
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
+  const classes = useStyles();
   const matchSmallScreent = useMediaQuery(theme.breakpoints.up('sm'));
   const matcheMidScreen = useMediaQuery(theme.breakpoints.down('lg'));
   const matcheLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
@@ -23,7 +24,7 @@ const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
-        sx={{ paddingY: 2 }}
+        sx={{ paddingY: 1 }}
         position="fixed"
         color="transparent"
         elevation={0}
@@ -57,15 +58,16 @@ const Navbar = () => {
                 </Button>
               </Box>
             )}
-            {/* <Search>
-              <SearchIconWrapper>
+            <Box className={classes.search}>
+              <Box className={classes.SearchIconWrapper}>
                 <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
+              </Box>
+              <InputBase
+                className={classes.searchInputBase}
                 placeholder="Search location…"
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </Search> */}
+            </Box>
             <Box sx={{ margin: 'auto' }}>
               <img src={logo} alt="oval logo" />
             </Box>
