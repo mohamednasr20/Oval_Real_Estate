@@ -1,6 +1,16 @@
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100vh',
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      height: '860',
+    },
+    [theme.breakpoints.up('lg')]: {
+      maxheight: 660,
+    },
+  },
   TextWrapper: {
     position: 'absolute',
     maxWidth: '100%',
@@ -10,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     paddingLeft: theme.spacing(0.5),
     paddingRight: theme.spacing(0.5),
-    marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
 
     [theme.breakpoints.up('sm')]: {
@@ -22,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       maxWidth: 515,
       top: 185,
-      left: '12.22%',
-      right: 'auto',
+      marginLeft: 0,
+      marginRight: 0,
     },
   },
   subtitle: {
@@ -36,18 +45,15 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: theme.spacing(10),
     },
   },
-  imgBox: {
+  img: {
     position: 'absolute',
     top: 0,
     left: 0,
     zIndex: -1,
     width: '100%',
-    height: 710,
+    maxHeight: '100%',
     [theme.breakpoints.up('sm')]: {
-      height: 860,
-    },
-    [theme.breakpoints.up('lg')]: {
-      height: 660,
+      height: '100%',
     },
   },
 }));

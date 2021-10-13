@@ -16,8 +16,8 @@ const Header = () => {
   const lgScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const tabletScreen = useMediaQuery(theme.breakpoints.up('sm'));
   return (
-    <Box sx={{ position: 'relative' }}>
-      <Container>
+    <Box className={classes.root}>
+      <Container sx={{ position: 'relative' }}>
         <Box className={classes.TextWrapper}>
           <Typography
             variant="h4"
@@ -53,17 +53,15 @@ const Header = () => {
             With the most complete source of homes for sale & real estate near
             you
           </Typography>
-          <SearchField />
+          <SearchField sx={{ paddingLeft: 5 }} />
         </Box>
       </Container>
 
-      <Box className={classes.imgBox}>
-        <img
-          style={{ width: '100%', maxHeight: '100%' }}
-          src={lgScreen ? lgHeader : tabletScreen ? tabletHeader : mobileHeader}
-          alt="header_img"
-        />
-      </Box>
+      <img
+        className={classes.img}
+        src={lgScreen ? lgHeader : tabletScreen ? tabletHeader : mobileHeader}
+        alt="header_img"
+      />
     </Box>
   );
 };
