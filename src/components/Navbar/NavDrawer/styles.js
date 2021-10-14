@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,10 +10,19 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 3,
     },
   },
+  closeIconWrap: {
+    marginLeft: 'auto',
+  },
   drawerList: {
     display: 'flex',
     flexDirection: 'column',
     padding: theme.spacing(2),
+  },
+  authBtn: {
+    marginTop: theme.spacing(2),
+    marginLeft: theme.spacing(4),
+    marginRight: theme.spacing(4),
+    borderRadius: 15,
   },
 }));
 

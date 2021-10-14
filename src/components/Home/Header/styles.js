@@ -1,15 +1,18 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      height: '860',
+      height: 860,
     },
     [theme.breakpoints.up('lg')]: {
-      maxheight: 660,
+      height: 660,
     },
+  },
+  container: {
+    position: 'relative',
   },
   TextWrapper: {
     position: 'absolute',
@@ -35,14 +38,36 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 0,
     },
   },
+  heading: {
+    fontSize: 32,
+    [theme.breakpoints.up('sm')]: {
+      fontSize: 42,
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: 48,
+    },
+  },
+  mainHeading: {
+    fontWeight: 700,
+  },
+  subHeading: {
+    fontWeight: 400,
+  },
+
   subtitle: {
+    fontWeight: 400,
+    fontSize: 14,
     paddingTop: theme.spacing(2),
     paddingLeft: theme.spacing(5),
     paddingRight: theme.spacing(5),
 
     [theme.breakpoints.up('sm')]: {
+      fontSize: 16,
       paddingLeft: theme.spacing(10),
       paddingRight: theme.spacing(10),
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: 18,
     },
   },
   img: {
@@ -52,9 +77,6 @@ const useStyles = makeStyles((theme) => ({
     zIndex: -1,
     width: '100%',
     maxHeight: '100%',
-    [theme.breakpoints.up('sm')]: {
-      height: '100%',
-    },
   },
 }));
 

@@ -1,7 +1,21 @@
-import { makeStyles } from '@mui/styles';
-import { alpha } from '@mui/material/styles';
+import { makeStyles, alpha } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  grow: {
+    flexGrow: 1,
+  },
+
+  logo: {
+    margin: 'auto',
+  },
+
+  leftLinks: {
+    marginLeft: 'auto',
+  },
+
+  leftLink: {
+    marginRight: theme.spacing(2),
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -16,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(3),
       width: 'auto',
     },
+  },
+  iconBtn: {
+    marginRight: theme.spacing(2),
   },
 
   SearchIconWrapper: {
@@ -43,6 +60,10 @@ const useStyles = makeStyles((theme) => ({
         width: '20ch',
       },
     },
+  },
+  authBtn: {
+    marginRight: theme.spacing(2),
+    borderRadius: 15,
   },
 }));
 

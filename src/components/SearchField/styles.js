@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,6 +10,18 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.spacing(1),
     [theme.breakpoints.up('sm')]: {
       flexDirection: 'row',
+    },
+  },
+  inputBase: {
+    padding: theme.spacing(1),
+  },
+  searchBtn: {
+    marginLeft: 'auto',
+    color: '#FFFFFF',
+    borderRadius: 15,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: 'auto',
     },
   },
 }));

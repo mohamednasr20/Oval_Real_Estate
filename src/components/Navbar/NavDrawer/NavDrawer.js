@@ -1,11 +1,11 @@
 import React from 'react';
-import Drawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import CloseIcon from '@mui/icons-material/Close';
+import Drawer from '@material-ui/core/Drawer';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import CloseIcon from '@material-ui/icons/Close';
 import useStyles from './styles';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
   const theme = useTheme();
@@ -14,39 +14,25 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
 
   return (
     <Drawer className={classes.root} open={drawerOpen}>
-      <Box className={classes.drawerList}>
-        <Box sx={{ marginLeft: 'auto' }}>
+      <div className={classes.drawerList}>
+        <div className={classes.closeIconWrap}>
           <CloseIcon onClick={() => setDrawerOpen(false)} />
-        </Box>
-        <Button color="inherit" sx={{ marginTop: 2 }}>
-          Buy
-        </Button>
-        <Button color="inherit" sx={{ marginTop: 2 }}>
-          Rent
-        </Button>
-        <Button color="inherit" sx={{ marginTop: 2 }}>
-          Home Loan
-        </Button>
-        <Button color="inherit" sx={{ marginTop: 2 }}>
-          advertise
-        </Button>
-        <Button color="inherit" sx={{ marginTop: 2 }}>
-          Help
-        </Button>
+        </div>
+        <Button color="inherit">Buy</Button>
+        <Button color="inherit">Rent</Button>
+        <Button color="inherit">Home Loan</Button>
+        <Button color="inherit">advertise</Button>
+        <Button color="inherit">Help</Button>
         {matchMidScreen && (
           <Button
+            className={classes.authBtn}
             variant="contained"
             color="primary"
-            sx={{
-              marginTop: 2,
-              marginX: 4,
-              borderRadius: 15,
-            }}
           >
             Sign up
           </Button>
         )}
-      </Box>
+      </div>
     </Drawer>
   );
 };

@@ -1,21 +1,19 @@
 import React from 'react';
-import InputBase from '@mui/material/InputBase';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
+import InputBase from '@material-ui/core/InputBase';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import useStyles from './styles';
 
 const SearchField = () => {
   const classes = useStyles();
   return (
     <Paper className={classes.root} component="form">
-      <InputBase sx={{ padding: 1 }} placeholder="Enter Address, zip, city" />
+      <InputBase
+        className={classes.inputBase}
+        placeholder="Enter Address, zip, city"
+      />
       <Button
-        sx={{
-          marginLeft: 'auto',
-          color: '#FFF',
-          borderRadius: 15,
-          width: { xs: '100%', sm: 'auto' },
-        }}
+        className={classes.searchBtn}
         color="secondary"
         variant="contained"
       >
