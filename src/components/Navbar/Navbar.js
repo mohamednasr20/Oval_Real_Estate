@@ -18,7 +18,7 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const theme = useTheme();
   const classes = useStyles();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('lg'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -66,7 +66,7 @@ const Navbar = () => {
                 <Button color="inherit">Sold</Button>
               </div>
             )}
-            <div className={classes.search}>
+            {/* <div className={classes.search}>
               <div className={classes.SearchIconWrapper}>
                 <SearchIcon />
               </div>
@@ -75,10 +75,10 @@ const Navbar = () => {
                 placeholder="Search location…"
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </div>
+            </div> */}
             <img className={classes.logo} src={logo} alt="oval logo" />
             {isLargeScreen && (
-              <div className={classes.leftLinks}>
+              <div>
                 <Button className={classes.leftLink} color="inherit">
                   advertise
                 </Button>

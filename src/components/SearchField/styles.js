@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   searchBtn: {
     marginLeft: 'auto',
     color: '#FFFFFF',
-    borderRadius: 15,
+    borderRadius: 25,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: 'auto',

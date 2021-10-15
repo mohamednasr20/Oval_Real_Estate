@@ -7,7 +7,7 @@ const ServicesCard = ({ icon, header, text }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.root}>
-      <img className={classes.icon} src={icon} alt="icon" />
+      <img className={classes.icon} src={icon} alt={`icon-${header}`} />
       <Typography color="textSecondary" variant="h5">
         {header}
       </Typography>

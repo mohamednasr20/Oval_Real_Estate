@@ -10,12 +10,16 @@ const useStyles = makeStyles((theme) => ({
   },
 
   logo: {
-    margin: 'auto',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 
-  leftLinks: {
-    marginLeft: 'auto',
-  },
+  // leftLinks: {
+  //   marginRight: 'auto',
+  // },
+  // rightLinks: {
+  //   marginLeft: 'auto',
+  // },
 
   leftLink: {
     marginRight: theme.spacing(2),
@@ -67,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
   authBtn: {
     marginRight: theme.spacing(2),
-    borderRadius: 15,
+    borderRadius: 25,
   },
 }));
 

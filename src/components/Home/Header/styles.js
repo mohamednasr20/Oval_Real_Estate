@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     top: 110,
     left: 0,
     right: 0,
+    marginTop: theme.spacing(1),
     paddingLeft: theme.spacing(0.5),
     paddingRight: theme.spacing(0.5),
     marginRight: theme.spacing(2),
