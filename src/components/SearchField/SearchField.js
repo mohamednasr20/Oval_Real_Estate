@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputBase from '@material-ui/core/InputBase';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import useStyles from './styles';
 
 const SearchField = () => {
+  const [options, setOptions] = useState(['Brooklyn,NY']);
+
   const classes = useStyles();
   return (
     <Paper className={classes.root} component="form">
-      <InputBase
-        className={classes.inputBase}
-        placeholder="Enter Address, zip, city"
+      <Autocomplete
+        style={{ width: 300 }}
+        freeSolo
+        options={options.map((option) => option)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            className={classes.searchField}
+            placeholder="Enter Address, zip, city"
+          />
+        )}
       />
+
       <Button
         className={classes.searchBtn}
         color="secondary"

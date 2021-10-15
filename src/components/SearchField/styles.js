@@ -12,8 +12,9 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'row',
     },
   },
-  inputBase: {
+  searchField: {
     padding: theme.spacing(1),
+    height: '100%',
   },
   searchBtn: {
     marginLeft: 'auto',
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
     },
+  },
+  noBorder: {
+    border: 'none',
   },
 }));
 
