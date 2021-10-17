@@ -15,6 +15,12 @@ const useStyles = makeStyles((theme) => ({
   searchField: {
     padding: theme.spacing(1),
     height: '100%',
+    '& .MuiInput-underline:before': {
+      borderBottom: 'none',
+    },
+    '& .MuiInput-underline:foucs': {
+      borderBottom: 'none',
+    },
   },
   searchBtn: {
     marginLeft: 'auto',
