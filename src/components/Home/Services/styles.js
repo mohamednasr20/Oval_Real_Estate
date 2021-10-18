@@ -4,6 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: theme.spacing(12),
     paddingBottom: theme.spacing(12),
+    margin: 'auto',
   },
   caption: {
     marginBottom: theme.spacing(2),

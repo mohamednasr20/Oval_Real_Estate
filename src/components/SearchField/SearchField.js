@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import InputBase from '@material-ui/core/InputBase';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
