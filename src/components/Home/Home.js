@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container';
 import Header from './Header/Header';
 import Services from './Services/Services';
 import Adventages from './Adventages/Adventages';
+import HowWorks from './HowWorks/HowWorks';
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Header />
       <Services />
       <Adventages />
+      <HowWorks />
     </Container>
   );
 };
