@@ -4,6 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
     width: '100%',
+    marginBottom: theme.spacing(10),
     [theme.breakpoints.up('sm')]: {
       height: 860,
     },

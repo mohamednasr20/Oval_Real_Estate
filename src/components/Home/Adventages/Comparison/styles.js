@@ -6,12 +6,13 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     padding: theme.spacing(2),
     borderRadius: '50px',
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(4),
     padding: theme.spacing(8),
 
     [theme.breakpoints.up('lg')]: {
       minWidth: 900,
-      margin: theme.spacing(8),
+      marginRight: theme.spacing(6),
+      marginLeft: theme.spacing(6),
       padding: theme.spacing(10),
     },
   },
