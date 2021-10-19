@@ -52,7 +52,7 @@ const Services = () => {
         We have the most listings and constant <br /> updates. So you'll never
         miss out.
       </Typography>
-      <Grid container spacing={2}>
+      <Grid className={classes.cardsGrid} container spacing={2}>
         {renderServiceCards()}
       </Grid>
     </Container>

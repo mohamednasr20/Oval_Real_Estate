@@ -2,8 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    paddingTop: theme.spacing(12),
-    paddingBottom: theme.spacing(12),
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
     margin: 'auto',
   },
   caption: {
@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       fontSize: 36,
     },
+  },
+
+  cardsGrid: {
+    marginTop: theme.spacing(8),
   },
 }));
 

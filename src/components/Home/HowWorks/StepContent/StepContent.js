@@ -1,6 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import howWorksBg from '../../../../assets/howWorks.png';
 import Button from '@material-ui/core/Button';
 import useStyles from './styles';
@@ -17,28 +19,36 @@ const StepContent = ({
   return (
     <div className={classes.root}>
       <img className={classes.imgBg} src={howWorksBg} alt="img-background" />
-      <Paper className={classes.content}>
-        <Typography variant="h5">{obj.header}</Typography>
-        <Typography variant="subtitle1">{obj.content}</Typography>
-        <div>
-          <Button
-            disabled={activeStep === 0}
-            onClick={handleBack}
-            className={classes.button}
+      <Card className={classes.content}>
+        <CardContent>
+          <Typography
+            className={classes.cardHeader}
+            variant="h5"
+            color="textSecondary"
           >
-            Back
-          </Button>
+            {obj.header}
+          </Typography>
+          <Typography variant="subtitle2">{obj.content}</Typography>
+        </CardContent>
+
+        <div className={classes.cardAction}>
+          <div>
+            <span className={classes.activeStep}>{activeStep + 1}/4</span>{' '}
+            {steps[activeStep]}
+          </div>
 
           <Button
-            variant="contained"
-            color="primary"
+            className={classes.cardBtn}
+            color="secondary"
             onClick={activeStep === steps.length - 1 ? handleReset : handleNext}
-            className={classes.button}
           >
-            {activeStep === steps.length - 1 ? 'Rest' : 'Next'}
+            {activeStep === steps.length - 1 ? 'Reset' : 'Next'}
+            {activeStep < steps.length - 1 && (
+              <ArrowForwardIosIcon fontSize="small" />
+            )}
           </Button>
         </div>
-      </Paper>
+      </Card>
     </div>
   );
 };
