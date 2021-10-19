@@ -7,14 +7,7 @@ import howWorksBg from '../../../../assets/howWorks.png';
 import Button from '@material-ui/core/Button';
 import useStyles from './styles';
 
-const StepContent = ({
-  obj,
-  activeStep,
-  handleBack,
-  handleNext,
-  steps,
-  handleReset,
-}) => {
+const StepContent = ({ obj, activeStep, handleNext, steps, handleReset }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
