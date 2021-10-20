@@ -51,7 +51,7 @@ const HowWorks = () => {
       </Typography>
       <div className={classes.stepperWrapper}>
         <Stepper
-          alternativeLabel
+          alternativeLabel={isMobile ? false : true}
           orientation={isMobile ? 'vertical' : 'horizontal'}
           activeStep={activeStep}
         >

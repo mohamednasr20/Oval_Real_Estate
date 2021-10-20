@@ -6,6 +6,12 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     paddingTop: theme.spacing(8),
     marginBottom: theme.spacing(8),
+    '& .MuiStepper-vertical': {
+      marginBottom: theme.spacing(4),
+    },
+    '& .MuiStepper-horizontal': {
+      marginBottom: theme.spacing(4),
+    },
   },
   subtitle: {
     paddingBottom: theme.spacing(3),

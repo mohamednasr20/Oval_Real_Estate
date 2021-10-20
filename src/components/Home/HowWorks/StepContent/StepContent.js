@@ -4,14 +4,27 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import howWorksBg from '../../../../assets/howWorks.png';
+import howWorksMobile from '../../../../assets/howWorksMobile.png';
+import howWorksTablet from '../../../../assets/howWorksTablet.png';
 import Button from '@material-ui/core/Button';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import useStyles from './styles';
 
 const StepContent = ({ obj, activeStep, handleNext, steps, handleReset }) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isLgScreen = useMediaQuery(theme.breakpoints.up('lg'));
+  const isTablet = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <div className={classes.root}>
-      <img className={classes.imgBg} src={howWorksBg} alt="img-background" />
+      <img
+        className={classes.imgBg}
+        src={
+          isLgScreen ? howWorksBg : isTablet ? howWorksTablet : howWorksMobile
+        }
+        alt="img-background"
+      />
       <Card className={classes.content}>
         <CardContent>
           <Typography

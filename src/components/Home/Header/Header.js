@@ -43,7 +43,7 @@ const Header = () => {
 
       <img
         className={classes.img}
-        src={lgScreen ? lgHeader : tabletScreen ? tabletHeader : mobileHeader}
+        src={lgScreen ? lgHeader : mobileHeader}
         alt="header_img"
       />
     </div>

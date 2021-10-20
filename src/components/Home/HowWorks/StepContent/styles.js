@@ -5,41 +5,70 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     textAlign: 'left',
     marginBottom: theme.spacing(8),
+    height: '100vh',
+    [theme.breakpoints.up('sm')]: {
+      height: 360,
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: 428,
+    },
   },
   imgBg: {
     position: 'absolute',
     top: 0,
-    left: 0,
+    height: '100%',
+    bottom: 0,
     width: '100%',
     zIndex: -1,
   },
   content: {
     position: 'absolute',
-    top: 0,
-    right: 0,
-    width: 440,
-    height: 400,
-    padding: theme.spacing(6),
+    bottom: 0,
+    width: '80%%',
+    padding: theme.spacing(2),
     margin: theme.spacing(1),
     borderRadius: '5%',
+    [theme.breakpoints.up('sm')]: {
+      MaxHeight: '100%',
+      padding: theme.spacing(4),
+      width: 360,
+      right: 0,
+      top: 0,
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: theme.spacing(6),
+      width: 440,
+    },
   },
   cardHeader: {
     fontSize: 24,
     fontWeight: '600',
-    paddingRight: theme.spacing(12),
     marginBottom: theme.spacing(2),
+
+    [theme.breakpoints.up('lg')]: {
+      paddingRight: theme.spacing(12),
+    },
   },
   cardAction: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: theme.spacing(2),
+
+    [theme.breakpoints.up('sm')]: {
+      marginTop: theme.spacing(4),
+    },
   },
+
   activeStep: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0.5),
     border: '#E8E7E8 solid 0.5px',
     borderRadius: 5,
     padding: theme.spacing(0.5),
+    marginTop: 'auto',
+
+    [theme.breakpoints.up('sm')]: {
+      marginRight: theme.spacing(2),
+    },
   },
   cardBtn: {
     fontWeight: '500',

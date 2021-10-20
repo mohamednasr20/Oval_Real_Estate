@@ -5,9 +5,9 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     width: '100%',
     marginBottom: theme.spacing(8),
-    [theme.breakpoints.up('sm')]: {
-      height: 860,
-    },
+    // [theme.breakpoints.up('sm')]: {
+    //   height: 860,
+    // },
     [theme.breakpoints.up('lg')]: {
       height: 660,
     },
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.up('sm')]: {
       maxWidth: 416,
-      top: 140,
+      top: 230,
       marginLeft: 'auto',
       marginRight: 'auto',
     },

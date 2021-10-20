@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   facts: {
-    paddingTop: theme.spacing(2),
+    paddingTop: theme.spacing(6),
     textAlign: 'center',
     '& h3': {
-      marginBottom: theme.spacing(3),
+      marginBottom: theme.spacing(4),
       fontWeight: '400',
       fontSize: 48,
       [theme.breakpoints.up('lg')]: {
-        fontSize: 72,
+        fontSize: 64,
       },
     },
     '& h6': {
