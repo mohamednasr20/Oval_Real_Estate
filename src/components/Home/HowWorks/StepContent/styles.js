@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     textAlign: 'left',
     marginBottom: theme.spacing(8),
-    height: '100vh',
+    height: 600,
     [theme.breakpoints.up('sm')]: {
       height: 360,
     },

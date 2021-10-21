@@ -12,7 +12,7 @@ import { useTheme } from '@material-ui/core/styles';
 const Header = () => {
   const theme = useTheme();
   const classes = useStyles();
-  const lgScreen = useMediaQuery(theme.breakpoints.up('lg'));
+  const lgScreen = useMediaQuery(theme.breakpoints.up('md'));
   const tabletScreen = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <div className={classes.root}>
@@ -43,7 +43,7 @@ const Header = () => {
 
       <img
         className={classes.img}
-        src={lgScreen ? lgHeader : mobileHeader}
+        src={lgScreen ? lgHeader : tabletScreen ? tabletHeader : mobileHeader}
         alt="header_img"
       />
     </div>

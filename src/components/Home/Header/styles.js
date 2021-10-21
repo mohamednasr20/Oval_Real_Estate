@@ -2,13 +2,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: 710,
     width: '100%',
-    marginBottom: theme.spacing(8),
-    // [theme.breakpoints.up('sm')]: {
-    //   height: 860,
-    // },
-    [theme.breakpoints.up('lg')]: {
+    marginBottom: theme.spacing(6),
+    [theme.breakpoints.up('sm')]: {
+      height: 860,
+    },
+    [theme.breakpoints.up('md')]: {
+      maxWidth: 1200,
       height: 660,
     },
   },
@@ -29,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.up('sm')]: {
       maxWidth: 416,
-      top: 230,
+      top: 140,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       maxWidth: 515,
       top: 185,
       marginLeft: 0,
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       fontSize: 42,
     },
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 48,
     },
   },
@@ -68,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(10),
       paddingRight: theme.spacing(10),
     },
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 18,
     },
   },
@@ -78,7 +79,13 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     zIndex: -1,
     width: '100%',
-    maxHeight: '100%',
+    height: 710,
+    [theme.breakpoints.up('sm')]: {
+      height: 860,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: 660,
+    },
   },
 }));
 

@@ -4,10 +4,9 @@ const useStyles = makeStyles((theme) => ({
   comparison: {
     minWidth: '100%',
     margin: 'auto',
-    padding: theme.spacing(2),
+    padding: theme.spacing(6),
     borderRadius: '50px',
     marginTop: theme.spacing(4),
-    padding: theme.spacing(8),
 
     [theme.breakpoints.up('lg')]: {
       minWidth: 900,
@@ -50,10 +49,16 @@ const useStyles = makeStyles((theme) => ({
 
   traditional: {
     display: 'flex',
+    flexDirection: 'row-reverse',
+    textAlign: 'left',
     alignItems: 'start',
-    justifyContent: 'center',
+    justifyContent: 'start',
     marginTop: theme.spacing(2),
     fontSize: 15,
+    [theme.breakpoints.up('sm')]: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
     [theme.breakpoints.up('lg')]: {
       justifyContent: 'right',
     },
@@ -61,15 +66,22 @@ const useStyles = makeStyles((theme) => ({
   oval: {
     display: 'flex',
     alignItems: 'start',
-    justifyContent: 'center',
+    justifyContent: 'start',
+    textAlign: 'left',
     fontSize: 15,
     marginTop: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      justifyContent: 'center',
+    },
     [theme.breakpoints.up('lg')]: {
       justifyContent: 'left',
     },
   },
   closeIcon: {
-    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+    },
   },
   checkIcon: {
     marginRight: theme.spacing(1),

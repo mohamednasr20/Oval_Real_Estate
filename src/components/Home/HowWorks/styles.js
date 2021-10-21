@@ -4,8 +4,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     textAlign: 'center',
     width: '100%',
-    paddingTop: theme.spacing(8),
-    marginBottom: theme.spacing(8),
+    paddingTop: theme.spacing(6),
+    marginBottom: theme.spacing(6),
     '& .MuiStepper-vertical': {
       marginBottom: theme.spacing(4),
     },
