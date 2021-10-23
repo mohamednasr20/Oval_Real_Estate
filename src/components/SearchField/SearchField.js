@@ -20,6 +20,7 @@ const SearchField = () => {
             {...params}
             className={classes.searchField}
             placeholder="Enter Address, zip, city"
+            InputProps={{ ...params.InputProps, disableUnderline: true }}
           />
         )}
       />
