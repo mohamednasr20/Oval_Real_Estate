@@ -3,8 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(4),
+    minWidth: '100%',
   },
   toggleGroup: {
+    marginRight: theme.spacing(4),
     '& .MuiToggleButton-root.Mui-selected': {
       background: 'rgba(0, 208, 149, 0.2)',
       color: theme.palette.secondary.main,
@@ -14,12 +16,23 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    border: `0.5px solid rgba(0, 0, 0, 0.1)`,
+    borderRadius: 15,
   },
   selectInput: {
     '& .MuiInputBase-input': {
-      padding: theme.spacing(1),
+      padding: theme.spacing(1, 2),
       borderRadius: 15,
-      //   border: `1px solid ${theme.palette.secondary.main}`,
+    },
+  },
+  saveSearch: {
+    marginLeft: theme.spacing(6),
+  },
+  toggleMap: {
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(15),
+    '& label': {
+      color: theme.palette.primary.main,
     },
   },
 }));
