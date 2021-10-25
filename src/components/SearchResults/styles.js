@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.secondary.main,
     },
   },
+  resultsContainer: {
+    marginTop: theme.spacing(6),
+  },
 }));
 
 export default useStyles;

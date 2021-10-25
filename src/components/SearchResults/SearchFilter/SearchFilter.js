@@ -48,7 +48,7 @@ const getPriceRange = () => {
   return newArray;
 };
 
-const SearchFilter = () => {
+const SearchFilter = ({ showMap, setShowMap }) => {
   const classes = useStyles();
   const [alignment, setAlignment] = React.useState('buy');
   const [state, setState] = useState({
@@ -57,8 +57,6 @@ const SearchFilter = () => {
     minPrice: '',
     maxPrice: '',
   });
-
-  const [showMap, setShowMap] = useState(true);
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);

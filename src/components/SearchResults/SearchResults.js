@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchFilter from './SearchFilter/SearchFilter';
+import List from './List/List';
+import Map from './Map/Map';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './styles';
 
 const SearchResults = () => {
   const classes = useStyles();
+  const [showMap, setShowMap] = useState(true);
+
   return (
     <Container className={classes.root}>
       <Typography className={classes.subtitle} variant="subtitle1">
@@ -14,7 +19,15 @@ const SearchResults = () => {
       <Typography className={classes.header} variant="h4" color="textSecondary">
         Search Results <span>'Atlanta, GA'</span>
       </Typography>
-      <SearchFilter />
+      <SearchFilter showMap={showMap} setShowMap={setShowMap} />
+      <Grid className={classes.resultsContainer} container spacing={3}>
+        <Grid item xs={showMap ? 7 : 12}>
+          <List />
+        </Grid>
+        <Grid item xs={showMap ? 5 : 0}>
+          <Map showMap={showMap} />
+        </Grid>
+      </Grid>
     </Container>
   );
 };
