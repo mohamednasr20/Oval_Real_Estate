@@ -2,8 +2,8 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import useStyles from './styles';
 
-const Map = () => {
-  const classes = useStyles();
+const Map = ({ showMap }) => {
+  const classes = useStyles(showMap);
   const coordinates = { lat: 40.72289, lng: -73.802961 };
   return (
     <div className={classes.mapContainer}>
