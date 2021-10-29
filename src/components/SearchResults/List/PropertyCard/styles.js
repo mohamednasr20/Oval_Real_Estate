@@ -2,11 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     borderRadius: '10px',
     minWidth: (showMap) => (showMap ? 260 : 290),
   },
   media: {
-    height: 200,
+    height: 180,
     borderRadius: '10px',
   },
   flex: {
@@ -17,6 +18,18 @@ const useStyles = makeStyles((theme) => ({
 
   subtitle: {
     marginRight: theme.spacing(1),
+  },
+  favoriteIcon: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1),
+    color: '#ffffff',
+    cursor: 'pointer',
+  },
+  chip: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    left: theme.spacing(1),
   },
 }));
 

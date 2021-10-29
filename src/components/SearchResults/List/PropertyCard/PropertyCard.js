@@ -4,12 +4,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
+import Chip from '@material-ui/core/Chip';
 import SingleBedIcon from '@material-ui/icons/SingleBed';
 import BathtubIcon from '@material-ui/icons/Bathtub';
 import SquareFootIcon from '@material-ui/icons/SquareFoot';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import useStyles from './styles';
 
-const PropertyCard = ({ showMap }) => {
+const PropertyCard = ({ showMap, isFavorite, isNew = true }) => {
   const classes = useStyles(showMap);
 
   return (
@@ -42,6 +45,10 @@ const PropertyCard = ({ showMap }) => {
           <Typography variant="subtitle1">Minnesota, Atlanta, GA</Typography>
         </CardContent>
       </CardActionArea>
+      <div className={classes.favoriteIcon}>
+        {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+      </div>
+      {isNew && <Chip className={classes.chip} label="NEW" />}
     </Card>
   );
 };
