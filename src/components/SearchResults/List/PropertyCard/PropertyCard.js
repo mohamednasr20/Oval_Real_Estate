@@ -10,9 +10,10 @@ import BathtubIcon from '@material-ui/icons/Bathtub';
 import SquareFootIcon from '@material-ui/icons/SquareFoot';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import notFoundImage from '../../../../assets/noImageFound.png';
 import useStyles from './styles';
 
-const PropertyCard = ({ showMap, isFavorite, isNew = true }) => {
+const PropertyCard = ({ showMap, isFavorite, property }) => {
   const classes = useStyles(showMap);
 
   return (
@@ -20,35 +21,39 @@ const PropertyCard = ({ showMap, isFavorite, isNew = true }) => {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://ap.rdcpix.com/4b045179835598550e912824f9ea76b3l-m746795374x.jpg"
+          image={property.photo ? property.photo : notFoundImage}
           title="property_image"
         />
-        <CardContent>
+        <CardContent className={classes.cardContent}>
           <Typography className={classes.subtitle} variant="h6">
-            $124.000
+            {property?.price}
           </Typography>
           <div className={classes.flex}>
             <SingleBedIcon />
             <Typography className={classes.subtitle} variant="subtitle1">
-              4bd
+              {property.beds ? `${property?.beds}bd` : 'studio'}
             </Typography>
             <BathtubIcon />
             <Typography className={classes.subtitle} variant="subtitle1">
-              3ba
+              {`${property?.baths}ba`}
             </Typography>
             <SquareFootIcon />
             <Typography className={classes.subtitle} variant="subtitle1">
-              1020sqft
+              {property.sqft_raw ? `${property?.sqft_raw}sqft` : '0'}
             </Typography>
           </div>
-          <Typography variant="subtitle1">8777 19th Ave</Typography>
-          <Typography variant="subtitle1">Minnesota, Atlanta, GA</Typography>
+          <Typography variant="subtitle1">
+            {property?.address_new.line}
+          </Typography>
+          <Typography variant="subtitle1">{`${property?.address_new.city}, ${property?.address_new.state}`}</Typography>
         </CardContent>
       </CardActionArea>
       <div className={classes.favoriteIcon}>
         {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
       </div>
-      {isNew && <Chip className={classes.chip} label="NEW" />}
+      {property.is_new_construction && (
+        <Chip className={classes.chip} label="NEW" />
+      )}
     </Card>
   );
 };

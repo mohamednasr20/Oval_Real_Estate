@@ -16,8 +16,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Navbar />
-      <Home />
-      {/* <SearchResults /> */}
+      {/* <Home /> */}
+      <SearchResults />
     </ThemeProvider>
   );
 };

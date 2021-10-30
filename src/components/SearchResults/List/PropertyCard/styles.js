@@ -4,7 +4,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     borderRadius: '10px',
-    minWidth: (showMap) => (showMap ? 260 : 290),
+    width: (showMap) => (showMap ? 260 : 290),
+    height: 346,
+    marginBottom: theme.spacing(2),
   },
   media: {
     height: 180,
@@ -18,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
 
   subtitle: {
     marginRight: theme.spacing(1),
+  },
+  cardContent: {
+    padding: theme.spacing(1),
   },
   favoriteIcon: {
     position: 'absolute',
