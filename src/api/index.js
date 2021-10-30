@@ -2,15 +2,16 @@ import axios from 'axios';
 
 const URL = 'https://realtor.p.rapidapi.com/properties/list-for-sale';
 
-// const URL = 'https://realtor.p.rapidapi.com/locations/auto-complete';
+const autoCompleteURL =
+  'https://realtor.p.rapidapi.com/locations/auto-complete';
 
-export const getproperties = async (params) => {
+export const getProperties = async (params) => {
   try {
     const { data } = await axios.get(URL, {
       params: params,
       headers: {
         'x-rapidapi-host': 'realtor.p.rapidapi.com',
-        'x-rapidapi-key': 'bdaad2bf95mshcc882269e544183p1df0a7jsn630a96e089b1',
+        'x-rapidapi-key': '',
       },
     });
     return data.listings;
@@ -21,11 +22,11 @@ export const getproperties = async (params) => {
 
 export const getLocationAutoComplete = async (searchTerm) => {
   try {
-    const { data } = await axios.get(URL, {
+    const { data } = await axios.get(autoCompleteURL, {
       params: { input: searchTerm },
       headers: {
         'x-rapidapi-host': 'realtor.p.rapidapi.com',
-        'x-rapidapi-key': 'bdaad2bf95mshcc882269e544183p1df0a7jsn630a96e089b1',
+        'x-rapidapi-key': '',
       },
     });
     return data.autocomplete;

@@ -5,19 +5,24 @@ import Map from './Map/Map';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { useSelector } from 'react-redux';
+
 import useStyles from './styles';
 
 const SearchResults = () => {
   const classes = useStyles();
   const [showMap, setShowMap] = useState(true);
+  const properties = useSelector((state) => state.globalState.properties);
+  const searchParams = useSelector((state) => state.globalState.searchParams);
+  const location = `${searchParams?.city}, ${searchParams?.state_code}`;
 
   return (
     <Container className={classes.root}>
       <Typography className={classes.subtitle} variant="subtitle1">
-        18 appear from 200 Results
+        {`18 appear from ${properties?.length}  Results`}
       </Typography>
       <Typography className={classes.header} variant="h4" color="textSecondary">
-        Search Results <span>'Atlanta, GA'</span>
+        Search Results <span>{location}</span>
       </Typography>
       <SearchFilter showMap={showMap} setShowMap={setShowMap} />
       <Grid className={classes.resultsContainer} container spacing={3}>

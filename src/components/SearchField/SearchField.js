@@ -3,21 +3,33 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import { onChangeSearchLocation } from '../../actions/globalState';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLocationAutoComplete } from '../../api';
 import useStyles from './styles';
 
-import { getLocationAutoComplete } from '../../api';
-
 const SearchField = () => {
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
   const [options, setOptions] = useState([]);
+
+  const params = useSelector((state) => state.globalState.searchParams);
+  const location = searchTerm.split(',');
+  const newParams = { state_code: location[1], city: location[0] };
+
+  const handleSearchLocation = (params, newParams) => {
+    dispatch(onChangeSearchLocation(params, newParams));
+  };
 
   const getNewOptions = async () => {
     if (!searchTerm) {
       setOptions([]);
     } else {
       const newOptions = await getLocationAutoComplete(searchTerm);
-      console.log(newOptions);
-      setOptions(newOptions.map((option) => option.city));
+
+      setOptions(
+        newOptions.map((option) => `${option?.city}, ${option?.state_code}`)
+      );
     }
   };
 
@@ -43,6 +55,7 @@ const SearchField = () => {
             InputProps={{ ...params.InputProps, disableUnderline: true }}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onSelect={(e) => setSearchTerm(e.target.value)}
           />
         )}
       />
@@ -51,6 +64,7 @@ const SearchField = () => {
         className={classes.searchBtn}
         color="secondary"
         variant="contained"
+        onClick={() => handleSearchLocation(params, newParams)}
       >
         Search
       </Button>

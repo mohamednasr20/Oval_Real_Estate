@@ -3,38 +3,29 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import useStyles from './styles';
 import PropertyCard from './PropertyCard/PropertyCard';
-
-import { getproperties } from '../../../api/index';
+import { getProperties } from '../../../actions/globalState';
+import { useSelector, useDispatch } from 'react-redux';
 
 const List = ({ showMap }) => {
   const classes = useStyles();
-  const [filter, setFilter] = useState({
-    state_code: 'FL',
-    city: 'orlando',
-    offset: '0',
-    limit: '18',
-    sort: 'relevance',
-  });
-
-  const [properties, setProperties] = useState([]);
-
-  const getPropertiesList = async () => {
-    const newList = await getproperties(filter);
-    await setProperties(newList);
-    await console.log(newList);
-  };
+  const dispatch = useDispatch();
+  const properties = useSelector((state) => state.globalState.properties);
+  const searchParams = useSelector((state) => state.globalState.searchParams);
 
   useEffect(() => {
-    getPropertiesList();
-  }, []);
+    dispatch(getProperties(searchParams));
+    // eslint-disable-next-line
+  }, [searchParams]);
 
-  const showPropertiesList = properties.map((property) => {
-    return (
-      <Grid item sx={showMap ? 4 : 3} key={property.property_id}>
-        <PropertyCard showMap={showMap} property={property} />
-      </Grid>
-    );
-  });
+  const showPropertiesList =
+    properties?.length &&
+    properties.map((property) => {
+      return (
+        <Grid item sx={showMap ? 4 : 3} key={property?.property_id}>
+          <PropertyCard showMap={showMap} property={property} />
+        </Grid>
+      );
+    });
 
   return (
     <>

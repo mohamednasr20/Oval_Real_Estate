@@ -1,0 +1,2 @@
+export const FETCH_PROPERTIES = 'FETCH_PROPERTIES';
+export const SEARCH_PARAMS = 'SEARCH_PARAMS';
