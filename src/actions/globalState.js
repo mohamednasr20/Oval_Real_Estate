@@ -10,10 +10,9 @@ export const getProperties = (params) => async (dispatch) => {
   }
 };
 
-export const onChangeSearchLocation = (searchParams, param) => (dispatch) => {
-  const newParams = { ...searchParams, ...param };
+export const onChangeSearchLocation = (param) => (dispatch) => {
   dispatch({
     type: SEARCH_PARAMS,
-    payload: newParams,
+    payload: param,
   });
 };

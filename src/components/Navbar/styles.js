@@ -14,16 +14,17 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
   },
 
-  // leftLinks: {
-  //   marginRight: 'auto',
-  // },
-  // rightLinks: {
-  //   marginLeft: 'auto',
-  // },
-
-  leftLink: {
-    marginRight: theme.spacing(2),
+  link: {
+    textDecoration: 'none',
+    fontSize: 14,
+    fontWeight: '400',
+    color: theme.palette.text.primary,
+    marginRight: theme.spacing(3),
   },
+  activLink: {
+    color: theme.palette.primary.main,
+  },
+
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,

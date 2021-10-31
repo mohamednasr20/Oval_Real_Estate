@@ -11,6 +11,7 @@ import InputBase from '@material-ui/core/InputBase';
 import logo from '../../assets/logo.png';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Link, useLocation } from 'react-router-dom';
 import useStyles from './styles';
 
 const Navbar = () => {
@@ -18,6 +19,7 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const theme = useTheme();
   const classes = useStyles();
+  const location = useLocation();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
@@ -33,6 +35,7 @@ const Navbar = () => {
   useEffect(() => {
     changeBackground();
     window.addEventListener('scroll', changeBackground);
+    console.log(location);
   });
 
   return (
@@ -61,30 +64,46 @@ const Navbar = () => {
             )}
             {isLargeScreen && (
               <div>
-                <Button color="inherit">Buy</Button>
-                <Button color="inherit">Rent</Button>
-                <Button color="inherit">Sold</Button>
+                <Link
+                  to="/search"
+                  className={`${classes.link} active`}
+                  color="inherit"
+                  onClick={() => console.log('he')}
+                >
+                  Buy
+                </Link>
+                <Link to="/search" className={classes.link} color="inherit">
+                  Rent
+                </Link>
+                <Link to="/search" className={classes.link} color="inherit">
+                  Sold
+                </Link>
               </div>
             )}
-            {/* <div className={classes.search}>
-              <div className={classes.SearchIconWrapper}>
-                <SearchIcon />
+            {location.pathname === '/search' && (
+              <div className={classes.search}>
+                <div className={classes.SearchIconWrapper}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  className={classes.searchInputBase}
+                  placeholder="Search location…"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
               </div>
-              <InputBase
-                className={classes.searchInputBase}
-                placeholder="Search location…"
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div> */}
-            <img className={classes.logo} src={logo} alt="oval logo" />
+            )}
+            <Link to="/" className={classes.logo}>
+              <img src={logo} alt="oval logo" />
+            </Link>
+
             {isLargeScreen && (
               <div>
-                <Button className={classes.leftLink} color="inherit">
-                  advertise
-                </Button>
-                <Button className={classes.leftLink} color="inherit">
+                <Link to="/" className={classes.link} color="inherit">
+                  Advertise
+                </Link>
+                <Link to="/" className={classes.link} color="inherit">
                   Help
-                </Button>
+                </Link>
               </div>
             )}
             {isMobile && (

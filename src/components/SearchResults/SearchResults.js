@@ -14,7 +14,9 @@ const SearchResults = () => {
   const [showMap, setShowMap] = useState(true);
   const properties = useSelector((state) => state.globalState.properties);
   const searchParams = useSelector((state) => state.globalState.searchParams);
-  const location = `${searchParams?.city}, ${searchParams?.state_code}`;
+  const location = searchParams.postal_code
+    ? searchParams.postal_code
+    : `${searchParams?.city}, ${searchParams?.state_code}`;
 
   return (
     <Container className={classes.root}>

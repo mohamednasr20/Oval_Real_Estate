@@ -29,6 +29,7 @@ export const getLocationAutoComplete = async (searchTerm) => {
         'x-rapidapi-key': '',
       },
     });
+
     return data.autocomplete;
   } catch (error) {
     console.log(error);

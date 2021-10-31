@@ -11,14 +11,14 @@ const initalState = {
   },
 };
 
-export default (state = initalState, action) => {
+export const globalState = (state = initalState, action) => {
   switch (action.type) {
     case FETCH_PROPERTIES:
       return { ...state, properties: action.payload };
     case SEARCH_PARAMS:
       return {
         ...state,
-        searchParams: action.payload,
+        searchParams: { ...initalState.searchParams, ...action.payload },
       };
     default:
       return state;
