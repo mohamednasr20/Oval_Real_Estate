@@ -5,6 +5,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
     minWidth: '100%',
   },
+  filterBtn: {
+    marginLeft: 'auto',
+    display: 'inline-block',
+  },
+  filterIcon: {
+    marginRight: theme.spacing(0.5),
+    color: theme.palette.primary.main,
+  },
   toggleGroup: {
     marginRight: theme.spacing(4),
     '& .MuiToggleButton-root.Mui-selected': {
@@ -26,13 +34,26 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   saveSearch: {
-    marginLeft: theme.spacing(6),
+    marginTop: theme.spacing(3),
+
+    [theme.breakpoints.up('sm')]: {
+      marginTop: 0,
+      marginLeft: theme.spacing(6),
+    },
   },
   toggleMap: {
-    marginTop: theme.spacing(1),
-    marginLeft: theme.spacing(15),
+    marginLeft: theme.spacing(7),
+    marginTop: theme.spacing(3),
     '& label': {
       color: theme.palette.primary.main,
+    },
+
+    [theme.breakpoints.up('sm')]: {
+      marginTop: 0,
+    },
+
+    [theme.breakpoints.up('md')]: {
+      marginTop: theme.spacing(1),
     },
   },
 }));

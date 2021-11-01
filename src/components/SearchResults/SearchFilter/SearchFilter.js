@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
+import SettingsInputCompositeIcon from '@material-ui/icons/SettingsInputComposite';
 import useStyles from './styles';
 
 const homeTypes = [
@@ -90,7 +91,15 @@ const SearchFilter = ({ showMap, setShowMap }) => {
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <SelectInput
+      <Button variant="outlined" className={classes.filterBtn}>
+        <SettingsInputCompositeIcon
+          fontSize="small"
+          className={classes.filterIcon}
+        />
+        Filter
+      </Button>
+
+      {/* <SelectInput
         state={state.homeType}
         name={'homeType'}
         handleChange={handleChange}
@@ -104,9 +113,9 @@ const SearchFilter = ({ showMap, setShowMap }) => {
         handleChange={handleChange}
         options={rooms}
         defaultValue="Rooms"
-      />
+      /> */}
 
-      <SelectInput
+      {/* <SelectInput
         state={state.minPrice}
         name="minPrice"
         handleChange={handleChange}
@@ -120,7 +129,7 @@ const SearchFilter = ({ showMap, setShowMap }) => {
         handleChange={handleChange}
         options={getPriceRange()}
         defaultValue="Max Price"
-      />
+      /> */}
       <Button className={classes.saveSearch} variant="outlined" color="primary">
         Save Search
       </Button>

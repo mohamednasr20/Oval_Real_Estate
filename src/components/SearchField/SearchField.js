@@ -32,14 +32,15 @@ const SearchField = () => {
       setOptions([]);
     } else {
       const newOptions = await getLocationAutoComplete(searchTerm);
-
-      setOptions(
-        newOptions.map((option) => {
-          return option.area_type === 'postal_code'
-            ? option.postal_code
-            : `${option?.city}, ${option?.state_code}`;
-        })
-      );
+      if (newOptions?.length) {
+        setOptions(
+          newOptions.map((option) => {
+            return option.area_type === 'postal_code'
+              ? option.postal_code
+              : `${option?.city}, ${option?.state_code}`;
+          })
+        );
+      }
     }
   };
 

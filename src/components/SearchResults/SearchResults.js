@@ -29,7 +29,7 @@ const SearchResults = () => {
       <SearchFilter showMap={showMap} setShowMap={setShowMap} />
       <Grid className={classes.resultsContainer} container spacing={3}>
         <Grid item xs={showMap ? 8 : 12}>
-          <List showMap={showMap} />
+          <List showMap={showMap} properties={properties} />
         </Grid>
         <Grid item xs={4}>
           <Map showMap={showMap} />

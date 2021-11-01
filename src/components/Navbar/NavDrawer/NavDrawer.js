@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
 import useStyles from './styles';
 import { useTheme } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
@@ -17,11 +18,21 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
         <div className={classes.closeIconWrap}>
           <CloseIcon onClick={() => setDrawerOpen(false)} />
         </div>
-        <Button color="inherit">Buy</Button>
-        <Button color="inherit">Rent</Button>
-        <Button color="inherit">Home Loan</Button>
-        <Button color="inherit">advertise</Button>
-        <Button color="inherit">Help</Button>
+        <Link className={classes.link} to="/search">
+          Buy
+        </Link>
+        <Link className={classes.link} to="/search">
+          Rent
+        </Link>
+        <Link className={classes.link} to="/search">
+          Home Loan
+        </Link>
+        <Link className={classes.link} to="">
+          advertise
+        </Link>
+        <Link className={classes.link} to="">
+          Help
+        </Link>
         {matchMidScreen && (
           <Button
             className={classes.authBtn}

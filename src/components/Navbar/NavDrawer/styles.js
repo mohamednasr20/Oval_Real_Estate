@@ -10,6 +10,14 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 3,
     },
   },
+  link: {
+    textDecoration: 'none',
+    fontSize: 14,
+    fontWeight: '400',
+    color: theme.palette.text.primary,
+    marginBottom: theme.spacing(2),
+    margin: 'auto',
+  },
   closeIconWrap: {
     marginLeft: 'auto',
   },

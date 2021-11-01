@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavDrawer from './NavDrawer/NavDrawer';
+import SearchField from '../SearchField/SearchField';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
@@ -62,7 +63,7 @@ const Navbar = () => {
                 </IconButton>
               </div>
             )}
-            {isLargeScreen && (
+            {isLargeScreen && location.pathname !== '/search' && (
               <div>
                 <Link
                   to="/search"
@@ -80,21 +81,23 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
-            {location.pathname === '/search' && (
-              <div className={classes.search}>
-                <div className={classes.SearchIconWrapper}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  className={classes.searchInputBase}
-                  placeholder="Search location…"
-                  inputProps={{ 'aria-label': 'search' }}
-                />
-              </div>
-            )}
+
             <Link to="/" className={classes.logo}>
               <img src={logo} alt="oval logo" />
             </Link>
+            {location.pathname === '/search' && (
+              // <div className={classes.search}>
+              //   <div className={classes.SearchIconWrapper}>
+              //     <SearchIcon />
+              //   </div>
+              //   <InputBase
+              //     className={classes.searchInputBase}
+              //     placeholder="Search location…"
+              //     inputProps={{ 'aria-label': 'search' }}
+              //   />
+              // </div>
+              <SearchField />
+            )}
 
             {isLargeScreen && (
               <div>
