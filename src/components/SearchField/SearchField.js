@@ -3,24 +3,33 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import SearchIcon from '@material-ui/icons/Search';
 import { onChangeSearchLocation } from '../../actions/globalState';
 import { useDispatch } from 'react-redux';
 import { getLocationAutoComplete } from '../../api';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import useStyles from './styles';
 
 const SearchField = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+  const classes = useStyles(location);
+  const theme = useTheme();
+
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up('sm'));
+
   const [searchTerm, setSearchTerm] = useState('');
   const [options, setOptions] = useState([]);
 
-  const location = searchTerm.includes(',')
+  const searchLocation = searchTerm.includes(',')
     ? searchTerm.split(',')
     : searchTerm;
-  const newLocation = Array.isArray(location)
-    ? { state_code: location[1], city: location[0] }
-    : { postal_code: location };
+  const newLocation = Array.isArray(searchLocation)
+    ? { state_code: searchLocation[1], city: searchLocation[0] }
+    : { postal_code: searchLocation };
 
   const handleSearchLocation = (params, newParams) => {
     dispatch(onChangeSearchLocation(params, newParams));
@@ -56,7 +65,6 @@ const SearchField = () => {
     // eslint-disable-next-line
   }, [searchTerm]);
 
-  const classes = useStyles();
   return (
     <Paper className={classes.root} component="form">
       <Autocomplete
@@ -67,7 +75,11 @@ const SearchField = () => {
           <TextField
             {...params}
             className={classes.searchField}
-            placeholder="Enter Address, zip, city"
+            placeholder={
+              isLargeScreen || location.pathname === '/'
+                ? 'Enter zip, City'
+                : 'search'
+            }
             InputProps={{ ...params.InputProps, disableUnderline: true }}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -75,15 +87,18 @@ const SearchField = () => {
           />
         )}
       />
-
-      <Button
-        className={classes.searchBtn}
-        color="secondary"
-        variant="contained"
-        onClick={() => handleSearchLocation(newLocation)}
-      >
-        Search
-      </Button>
+      {location.pathname === '/' ? (
+        <Button
+          className={classes.searchBtn}
+          color="secondary"
+          variant="contained"
+          onClick={() => handleSearchLocation(newLocation)}
+        >
+          Search
+        </Button>
+      ) : (
+        <SearchIcon className={classes.searchIcon} fontSize="large" />
+      )}
     </Paper>
   );
 };

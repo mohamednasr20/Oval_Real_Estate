@@ -2,14 +2,20 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(1),
+    padding: ({ pathname }) =>
+      pathname === '/' ? theme.spacing(1) : theme.spacing(0.25),
     display: 'flex',
-    flexDirection: 'column',
+    width: ({ pathname }) => (pathname === '/search' ? 150 : 'auto'),
+    flexDirection: ({ pathname }) => (pathname === '/' ? 'column' : 'row'),
     alignItems: 'center',
-    marginTop: theme.spacing(5),
+    marginTop: ({ pathname }) =>
+      pathname === '/search' ? theme.spacing(1) : theme.spacing(5),
     borderRadius: theme.spacing(1),
+
     [theme.breakpoints.up('sm')]: {
-      flexDirection: 'row',
+      margin: 'auto',
+      flexDirection: ({ pathname }) => pathname === '/' && 'row',
+      width: ({ pathname }) => (pathname === '/search' ? 300 : 'auto'),
     },
   },
   searchField: {
@@ -26,13 +32,17 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     color: '#FFFFFF',
     borderRadius: 25,
-    width: '100%',
+    width: ({ pathname }) => (pathname === '/' ? '100%' : 'auto'),
     [theme.breakpoints.up('sm')]: {
-      width: 'auto',
+      width: ({ pathname }) => pathname && 'auto',
     },
   },
   noBorder: {
     border: 'none',
+  },
+
+  searchIcon: {
+    color: theme.palette.primary.main,
   },
 }));
 

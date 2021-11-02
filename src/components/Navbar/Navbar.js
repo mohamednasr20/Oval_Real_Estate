@@ -7,8 +7,6 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import logo from '../../assets/logo.png';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -19,8 +17,9 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const theme = useTheme();
-  const classes = useStyles();
   const location = useLocation();
+  const classes = useStyles(location);
+
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
@@ -85,19 +84,7 @@ const Navbar = () => {
             <Link to="/" className={classes.logo}>
               <img src={logo} alt="oval logo" />
             </Link>
-            {location.pathname === '/search' && (
-              // <div className={classes.search}>
-              //   <div className={classes.SearchIconWrapper}>
-              //     <SearchIcon />
-              //   </div>
-              //   <InputBase
-              //     className={classes.searchInputBase}
-              //     placeholder="Search location…"
-              //     inputProps={{ 'aria-label': 'search' }}
-              //   />
-              // </div>
-              <SearchField />
-            )}
+            {location.pathname === '/search' && <SearchField />}
 
             {isLargeScreen && (
               <div>
