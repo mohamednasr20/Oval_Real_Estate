@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   searchField: {
-    padding: theme.spacing(1),
+    padding: ({ pathname }) =>
+      pathname === '/' ? theme.spacing(0.5, 1) : theme.spacing(0, 1),
     height: '100%',
     '& .MuiInput-underline:before': {
       borderBottom: 'none',
@@ -42,7 +43,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   searchIcon: {
-    color: theme.palette.primary.main,
+    color: '#FFFFFF',
+    background: theme.palette.text.secondary,
+    padding: theme.spacing(0.25),
+    borderRadius: 3,
   },
 }));
 

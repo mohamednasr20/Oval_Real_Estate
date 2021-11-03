@@ -97,7 +97,11 @@ const SearchField = () => {
           Search
         </Button>
       ) : (
-        <SearchIcon className={classes.searchIcon} fontSize="large" />
+        <SearchIcon
+          className={classes.searchIcon}
+          fontSize="large"
+          onClick={() => handleSearchLocation(newLocation)}
+        />
       )}
     </Paper>
   );

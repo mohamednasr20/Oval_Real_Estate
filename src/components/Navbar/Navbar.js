@@ -35,7 +35,6 @@ const Navbar = () => {
   useEffect(() => {
     changeBackground();
     window.addEventListener('scroll', changeBackground);
-    console.log(location);
   });
 
   return (
@@ -44,7 +43,7 @@ const Navbar = () => {
         className={classes.nav}
         position="fixed"
         color={navbar ? 'inherit' : 'transparent'}
-        elevation={navbar ? 6 : 0}
+        elevation={navbar || location.pathname !== '/' ? 6 : 0}
       >
         <Container>
           <Toolbar>
