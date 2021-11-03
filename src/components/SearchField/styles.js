@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.text.secondary,
     padding: theme.spacing(0.25),
     borderRadius: 3,
+    cursor: 'pointer',
   },
 }));
 

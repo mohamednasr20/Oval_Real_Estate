@@ -11,11 +11,12 @@ const List = ({ showMap }) => {
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.globalState.properties);
   const searchParams = useSelector((state) => state.globalState.searchParams);
+  const searchType = useSelector((state) => state.globalState.searchType);
 
   useEffect(() => {
-    dispatch(getProperties(searchParams));
+    dispatch(getProperties(searchParams, searchType));
     // eslint-disable-next-line
-  }, [searchParams]);
+  }, [searchParams, searchType]);
 
   const showPropertiesList =
     properties?.length &&

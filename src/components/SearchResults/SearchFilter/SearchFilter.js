@@ -9,24 +9,24 @@ import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import SettingsInputCompositeIcon from '@material-ui/icons/SettingsInputComposite';
 import { useTheme } from '@material-ui/core/styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleChangeSearchType } from '../../../actions/globalState';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useStyles from './styles';
 
 const SearchFilter = ({ showMap, setShowMap }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const dispatch = useDispatch();
+
+  const searchType = useSelector((state) => state.globalState.searchType);
+
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-
-  const [alignment, setAlignment] = useState('buy');
 
   const [anchorEl, setAnchorEl] = useState(null);
   const openPoper = Boolean(anchorEl);
   const id = openPoper ? 'simple-popover' : undefined;
-
-  const handleAlignment = (event, newAlignment) => {
-    setAlignment(newAlignment);
-  };
 
   const handleShowFilterPoper = (event) => {
     setAnchorEl(event.currentTarget);
@@ -40,18 +40,30 @@ const SearchFilter = ({ showMap, setShowMap }) => {
     <div className={classes.root}>
       <ToggleButtonGroup
         className={classes.toggleGroup}
-        value={alignment}
+        value={searchType}
         exclusive
-        onChange={handleAlignment}
+        // onChange={handleAlignment}
         aria-label="text alignment"
       >
-        <ToggleButton value="buy" aria-label="buy aligned">
+        <ToggleButton
+          value="list-for-sale"
+          aria-label="buy aligned"
+          onClick={() => dispatch(handleChangeSearchType('list-for-sale'))}
+        >
           Buy
         </ToggleButton>
-        <ToggleButton value="rent" aria-label="rent-aigned">
+        <ToggleButton
+          value="list-for-rent"
+          aria-label="rent-aigned"
+          onClick={() => dispatch(handleChangeSearchType('list-for-rent'))}
+        >
           Rent
         </ToggleButton>
-        <ToggleButton value="sold" aria-label="sold aligned">
+        <ToggleButton
+          value="list-sold"
+          aria-label="sold aligned"
+          onClick={() => dispatch(handleChangeSearchType('list-sold'))}
+        >
           Sold
         </ToggleButton>
       </ToggleButtonGroup>

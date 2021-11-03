@@ -1,4 +1,8 @@
-import { FETCH_PROPERTIES, SEARCH_PARAMS } from '../constants/actionTypes';
+import {
+  FETCH_PROPERTIES,
+  SEARCH_PARAMS,
+  SEARCH_TYPE,
+} from '../constants/actionTypes';
 
 const initalState = {
   properties: [],
@@ -9,6 +13,7 @@ const initalState = {
     limit: '20',
     sort: 'relevance',
   },
+  searchType: 'list-for-sale',
 };
 
 export const globalState = (state = initalState, action) => {
@@ -20,6 +25,8 @@ export const globalState = (state = initalState, action) => {
         ...state,
         searchParams: { ...initalState.searchParams, ...action.payload },
       };
+    case SEARCH_TYPE:
+      return { ...state, searchType: action.payload };
     default:
       return state;
   }

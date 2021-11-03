@@ -11,6 +11,8 @@ import logo from '../../assets/logo.png';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { handleChangeSearchType } from '../../actions/globalState';
 import useStyles from './styles';
 
 const Navbar = () => {
@@ -18,6 +20,7 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const theme = useTheme();
   const location = useLocation();
+  const dispatch = useDispatch();
   const classes = useStyles(location);
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -67,14 +70,28 @@ const Navbar = () => {
                   to="/search"
                   className={`${classes.link} active`}
                   color="inherit"
-                  onClick={() => console.log('he')}
+                  onClick={() =>
+                    dispatch(handleChangeSearchType('list-for-sale'))
+                  }
                 >
                   Buy
                 </Link>
-                <Link to="/search" className={classes.link} color="inherit">
+                <Link
+                  to="/search"
+                  className={classes.link}
+                  color="inherit"
+                  onClick={() =>
+                    dispatch(handleChangeSearchType('list-for-rent'))
+                  }
+                >
                   Rent
                 </Link>
-                <Link to="/search" className={classes.link} color="inherit">
+                <Link
+                  to="/search"
+                  className={classes.link}
+                  color="inherit"
+                  onClick={() => dispatch(handleChangeSearchType('list-sold'))}
+                >
                   Sold
                 </Link>
               </div>

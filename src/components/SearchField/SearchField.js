@@ -32,8 +32,8 @@ const SearchField = () => {
     : { postal_code: searchLocation };
 
   const handleSearchLocation = (params, newParams) => {
-    dispatch(onChangeSearchLocation(params, newParams));
     history.push('/search');
+    dispatch(onChangeSearchLocation(params, newParams));
   };
 
   const getNewOptions = async () => {
@@ -54,11 +54,14 @@ const SearchField = () => {
   };
 
   useEffect(() => {
+    let cancel = false;
     const timeOut = setTimeout(() => {
+      if (cancel) return;
       getNewOptions();
     }, 500);
 
     return () => {
+      cancel = true;
       clearTimeout(timeOut);
     };
 
