@@ -12,6 +12,10 @@ const initalState = {
     offset: '0',
     limit: '20',
     sort: 'relevance',
+    beds_min: '',
+    price_min: '',
+    price_max: '',
+    prop_type: '',
   },
   searchType: 'list-for-sale',
 };
@@ -23,7 +27,7 @@ export const globalState = (state = initalState, action) => {
     case SEARCH_PARAMS:
       return {
         ...state,
-        searchParams: { ...initalState.searchParams, ...action.payload },
+        searchParams: action.payload,
       };
     case SEARCH_TYPE:
       return { ...state, searchType: action.payload };

@@ -3,6 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(16),
+    '& .MuiGrid-container': {
+      flexDirection: 'column-reverse',
+
+      [theme.breakpoints.up('md')]: {
+        flexDirection: 'row',
+      },
+    },
   },
   subtitle: {
     fontSize: 17,
@@ -17,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   },
   resultsContainer: {
     marginTop: theme.spacing(6),
+    '& .MuiGrid-container': {
+      flexDirection: 'row',
+    },
   },
 }));
 

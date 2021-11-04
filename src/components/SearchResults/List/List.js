@@ -22,7 +22,13 @@ const List = ({ showMap }) => {
     properties?.length &&
     properties.map((property) => {
       return (
-        <Grid item sx={showMap ? 4 : 3} key={property?.property_id}>
+        <Grid
+          item
+          style={{ margin: 'auto' }}
+          sx={12}
+          md={showMap ? 6 : 3}
+          key={property?.property_id}
+        >
           <PropertyCard showMap={showMap} property={property} />
         </Grid>
       );

@@ -17,9 +17,6 @@ const SelectInput = ({ state, name, handleChange, options, defaultValue }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const isInputSelected = (value) =>
-    value === '' ? 'inherit' : theme.palette.secondary.main;
-
   return (
     <FormControl className={classes.formControl}>
       <NativeSelect
@@ -29,7 +26,8 @@ const SelectInput = ({ state, name, handleChange, options, defaultValue }) => {
         name={name}
         className={classes.selectInput}
         style={{
-          color: isInputSelected(state),
+          color:
+            state === '' || !state ? 'inherit' : theme.palette.secondary.main,
         }}
         inputProps={{ 'aria-label': name }}
       >

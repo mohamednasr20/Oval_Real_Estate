@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SelectInput from './SelectInput/SelectInput';
-
+import { onChangeSearchParams } from '../../../actions/globalState';
+import { useDispatch, useSelector } from 'react-redux';
 const FIlterWraper = () => {
-  const [state, setState] = useState({
-    rooms: '',
-    homeType: '',
-    minPrice: '',
-    maxPrice: '',
-  });
+  const searchParams = useSelector((state) => state.globalState.searchParams);
+  const dispatch = useDispatch();
 
   const filterSelect = {
     homeTypes: [
-      { value: 'house', text: 'House' },
-      { value: 'condo', text: 'Condo' },
-      { value: 'twonhome', text: 'Twonhome' },
-      { value: 'multi-family', text: 'Multi-Family' },
+      { value: 'apartment', text: 'Apartmet' },
+      { value: 'single_family', text: 'Single Family' },
+      { value: 'mapi_condo_townhome', text: 'Condo' },
+      { value: 'other', text: 'Other' },
     ],
     rooms: [
       { value: 1, text: '1+ Beds' },
@@ -50,43 +47,41 @@ const FIlterWraper = () => {
     return newArray;
   };
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(onChangeSearchParams(searchParams, { [name]: value }));
   };
 
   return (
     <>
       <SelectInput
-        state={state.homeType}
-        name={'homeType'}
+        state={searchParams.prop_type}
+        name={'prop_type'}
         handleChange={handleChange}
         options={filterSelect.homeTypes}
         defaultValue="Types"
       />
 
       <SelectInput
-        state={state.rooms}
-        name="rooms"
+        state={searchParams.beds_min}
+        name="beds_min"
         handleChange={handleChange}
         options={filterSelect.rooms}
         defaultValue="Rooms"
       />
 
       <SelectInput
-        state={state.minPrice}
-        name="minPrice"
+        state={searchParams.price_min}
+        name="price_min"
         handleChange={handleChange}
         options={getPriceRange()}
         defaultValue="Min Price"
       />
 
       <SelectInput
-        state={state.maxPrice}
-        name="maxPrice"
+        state={searchParams.price_max}
+        name="price_max"
         handleChange={handleChange}
         options={getPriceRange()}
         defaultValue="Max Price"

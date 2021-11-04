@@ -18,9 +18,9 @@ export const handleChangeSearchType = (searchType) => (dispatch) => {
   dispatch({ type: SEARCH_TYPE, payload: searchType });
 };
 
-export const onChangeSearchLocation = (param) => (dispatch) => {
+export const onChangeSearchParams = (params, param) => (dispatch) => {
   dispatch({
     type: SEARCH_PARAMS,
-    payload: param,
+    payload: { ...params, ...param },
   });
 };

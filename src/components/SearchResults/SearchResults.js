@@ -28,10 +28,10 @@ const SearchResults = () => {
       </Typography>
       <SearchFilter showMap={showMap} setShowMap={setShowMap} />
       <Grid className={classes.resultsContainer} container spacing={3}>
-        <Grid item xs={showMap ? 8 : 12}>
+        <Grid item xs={12} md={showMap ? 6 : 12}>
           <List showMap={showMap} properties={properties} />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} md={6}>
           <Map showMap={showMap} />
         </Grid>
       </Grid>

@@ -8,7 +8,8 @@ export const getProperties = async (params, searchType) => {
         params: params,
         headers: {
           'x-rapidapi-host': 'realty-in-us.p.rapidapi.com',
-          'x-rapidapi-key': '',
+          'x-rapidapi-key':
+            'a425a246b4msh92f90ff21bbb893p160a52jsn34d9ce06c7f9',
         },
       }
     );

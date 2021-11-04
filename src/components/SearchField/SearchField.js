@@ -4,8 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-import { onChangeSearchLocation } from '../../actions/globalState';
-import { useDispatch } from 'react-redux';
+import { onChangeSearchParams } from '../../actions/globalState';
+import { useDispatch, useSelector } from 'react-redux';
 import { getLocationAutoComplete } from '../../api';
 import { useHistory, useLocation } from 'react-router-dom';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -19,6 +19,8 @@ const SearchField = () => {
   const classes = useStyles(location);
   const theme = useTheme();
 
+  const searchParams = useSelector((state) => state.globalState.searchParams);
+
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('sm'));
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,9 +33,10 @@ const SearchField = () => {
     ? { state_code: searchLocation[1], city: searchLocation[0] }
     : { postal_code: searchLocation };
 
-  const handleSearchLocation = (params, newParams) => {
+  const handleSearchLocation = (searchParams, newParams) => {
     history.push('/search');
-    dispatch(onChangeSearchLocation(params, newParams));
+    console.log(searchParams);
+    dispatch(onChangeSearchParams(searchParams, newParams));
   };
 
   const getNewOptions = async () => {
@@ -95,7 +98,7 @@ const SearchField = () => {
           className={classes.searchBtn}
           color="secondary"
           variant="contained"
-          onClick={() => handleSearchLocation(newLocation)}
+          onClick={() => handleSearchLocation(searchParams, newLocation)}
         >
           Search
         </Button>
@@ -103,7 +106,7 @@ const SearchField = () => {
         <SearchIcon
           className={classes.searchIcon}
           fontSize="large"
-          onClick={() => handleSearchLocation(newLocation)}
+          onClick={() => handleSearchLocation(searchParams, newLocation)}
         />
       )}
     </Paper>

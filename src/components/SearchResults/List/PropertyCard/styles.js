@@ -4,9 +4,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     borderRadius: '10px',
-    width: (showMap) => (showMap ? 260 : 290),
+    width: 290,
     height: 346,
     marginBottom: theme.spacing(2),
+    margin: 'auto',
   },
   media: {
     height: 180,
