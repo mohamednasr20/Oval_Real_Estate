@@ -72,7 +72,7 @@ const SearchField = () => {
   }, [searchTerm]);
 
   return (
-    <Paper className={classes.root} component="form">
+    <Paper className={classes.root} component="form" elevation={0}>
       <Autocomplete
         freeSolo
         fullWidth

@@ -13,8 +13,8 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import notFoundImage from '../../../../assets/noImageFound.png';
 import useStyles from './styles';
 
-const PropertyCard = ({ isFavorite, property }) => {
-  const classes = useStyles();
+const PropertyCard = ({ showMap, isFavorite, property }) => {
+  const classes = useStyles(showMap);
 
   return (
     <Card className={classes.root}>

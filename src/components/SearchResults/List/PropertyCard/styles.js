@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
     height: 346,
     marginBottom: theme.spacing(2),
     margin: 'auto',
+    [theme.breakpoints.up('md')]: {
+      width: (showMap) => (showMap ? 260 : 290),
+    },
   },
   media: {
     height: 180,

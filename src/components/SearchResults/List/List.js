@@ -26,7 +26,7 @@ const List = ({ showMap }) => {
           item
           style={{ margin: 'auto' }}
           sx={12}
-          md={showMap ? 6 : 3}
+          md={showMap ? 4 : 3}
           key={property?.property_id}
         >
           <PropertyCard showMap={showMap} property={property} />

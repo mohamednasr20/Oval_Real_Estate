@@ -1,20 +1,44 @@
 import React from 'react';
+import PropertyCard from '../List/PropertyCard/PropertyCard';
 import GoogleMapReact from 'google-map-react';
+import { useSelector } from 'react-redux';
 import useStyles from './styles';
 
 const Map = ({ showMap }) => {
   const classes = useStyles(showMap);
-  const coordinates = { lat: 40.72289, lng: -73.802961 };
+
+  const properties = useSelector((state) => state.globalState.properties);
+
+  const coordinates = properties?.length
+    ? { lat: properties[10]?.lat, lng: properties[10]?.lon }
+    : { lat: 40.72289, lng: -73.802961 };
+
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
+        bootstrapURLKeys={{ key: '' }}
         defaultCenter={coordinates}
         center={coordinates}
-        defaultZoom={14}
+        averageCenter
+        defaultZoom={10}
         margin={[50, 50, 50, 50]}
-        options={{ disableDefaultUI: true, zoomControl: true }}
-      ></GoogleMapReact>
+        options={{
+          disableDefaultUI: true,
+          zoomControl: true,
+        }}
+      >
+        {properties?.length &&
+          properties?.map((property, i) => (
+            <div
+              key={property.property_id}
+              className={classes.markerContainer}
+              lat={property.lat}
+              lng={property.lon}
+            >
+              {i + 1}
+            </div>
+          ))}
+      </GoogleMapReact>
     </div>
   );
 };
