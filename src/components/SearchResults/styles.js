@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'row',
     },
   },
+  loading: {
+    minWidth: '100%',
+    textAlign: 'center',
+  },
 }));
 
 export default useStyles;

@@ -1,5 +1,7 @@
 import {
   FETCH_PROPERTIES,
+  FETCH_PROPERTY,
+  IS_LOADING,
   SEARCH_PARAMS,
   SEARCH_TYPE,
 } from '../constants/actionTypes';
@@ -14,6 +16,15 @@ export const getProperties = (params, searchType) => async (dispatch) => {
   }
 };
 
+export const getProperty = (property_id) => async (dispatch) => {
+  try {
+    const res = await api.getProperty(property_id);
+    dispatch({ type: FETCH_PROPERTY, payload: res });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const handleChangeSearchType = (searchType) => (dispatch) => {
   dispatch({ type: SEARCH_TYPE, payload: searchType });
 };
@@ -23,4 +34,8 @@ export const onChangeSearchParams = (params, param) => (dispatch) => {
     type: SEARCH_PARAMS,
     payload: { ...params, ...param },
   });
+};
+
+export const handleLoading = (boolean) => (dispatch) => {
+  dispatch({ type: IS_LOADING, payload: boolean });
 };
