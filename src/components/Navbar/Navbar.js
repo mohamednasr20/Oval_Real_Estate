@@ -8,11 +8,12 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../assets/logo.png';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory, useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { handleChangeSearchType } from '../../actions/globalState';
+import { handleChangeSearchType, getProperty } from '../../actions/globalState';
 import useStyles from './styles';
 
 const Navbar = () => {
@@ -20,8 +21,10 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const theme = useTheme();
   const location = useLocation();
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles(location);
+  const matchPropertyDetailes = useRouteMatch('/search/:id');
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
@@ -64,11 +67,23 @@ const Navbar = () => {
                 </IconButton>
               </div>
             )}
+            {matchPropertyDetailes &&
+              matchPropertyDetailes.path === '/search/:id' && (
+                <div className={classes.backBtn}>
+                  <Button
+                    color="secondary"
+                    onClick={() => history.push('/search')}
+                  >
+                    <ArrowBackIcon className={classes.backIcon} />
+                    Back To Maps
+                  </Button>
+                </div>
+              )}
             {isLargeScreen && location.pathname !== '/search' && (
               <div>
                 <Link
                   to="/search"
-                  className={`${classes.link} active`}
+                  className={classes.link}
                   color="inherit"
                   onClick={() =>
                     dispatch(handleChangeSearchType('list-for-sale'))
@@ -96,14 +111,16 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
+            {!matchPropertyDetailes && (
+              <Link to="/" className={classes.logo}>
+                <img src={logo} alt="oval logo" />
+              </Link>
+            )}
 
-            <Link to="/" className={classes.logo}>
-              <img src={logo} alt="oval logo" />
-            </Link>
             {location.pathname === '/search' && <SearchField />}
 
             {isLargeScreen && (
-              <div>
+              <div style={{ marginLeft: 'auto' }}>
                 <Link to="/" className={classes.link} color="inherit">
                   Advertise
                 </Link>

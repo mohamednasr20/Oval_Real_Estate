@@ -18,7 +18,7 @@ export const getProperties = (params, searchType) => async (dispatch) => {
 
 export const getProperty = (property_id) => async (dispatch) => {
   try {
-    const res = await api.getProperty(property_id);
+    const res = !property_id ? {} : await api.getProperty(property_id);
     dispatch({ type: FETCH_PROPERTY, payload: res });
   } catch (error) {
     console.log(error);

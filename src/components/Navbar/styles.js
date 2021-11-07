@@ -21,13 +21,16 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     marginRight: theme.spacing(3),
   },
-  activLink: {
-    color: theme.palette.primary.main,
-  },
 
   authBtn: {
     marginRight: theme.spacing(2),
     borderRadius: 25,
+  },
+  backBtn: {
+    marginRight: 'auto',
+  },
+  backIcon: {
+    marginRight: theme.spacing(0.5),
   },
 }));
 

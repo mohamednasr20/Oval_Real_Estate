@@ -47,7 +47,7 @@ export const getLocationAutoComplete = async (searchTerm) => {
         params: { input: searchTerm },
         headers: {
           'x-rapidapi-host': 'realty-in-us.p.rapidapi.com',
-          'x-rapidapi-key': process.env.REACT_APP_AUTOCOMPLETE,
+          'x-rapidapi-key': process.env.REACT_APP_XRAPIDAPIkEY,
         },
       }
     );
