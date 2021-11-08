@@ -14,14 +14,14 @@ import useStyles from './styles';
 const StepContent = ({ obj, activeStep, handleNext, steps, handleReset }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const isLgScreen = useMediaQuery(theme.breakpoints.up('lg'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const isTablet = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <div className={classes.root}>
       <img
         className={classes.imgBg}
         src={
-          isLgScreen ? howWorksBg : isTablet ? howWorksTablet : howWorksMobile
+          isDesktop ? howWorksBg : isTablet ? howWorksTablet : howWorksMobile
         }
         alt="img-background"
       />

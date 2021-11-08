@@ -13,8 +13,8 @@ import useStyles from './styles';
 const Adventages = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const lgScreen = useMediaQuery(theme.breakpoints.up('lg'));
-  const tabletScreen = useMediaQuery(theme.breakpoints.up('sm'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isTablet = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <Container className={classes.root}>
       <div>
@@ -35,9 +35,9 @@ const Adventages = () => {
       <img
         className={classes.shapeBackground}
         src={
-          lgScreen
+          isDesktop
             ? adventagesBg
-            : tabletScreen
+            : isTablet
             ? adventagesBgTablet
             : adventagesBgMobile
         }

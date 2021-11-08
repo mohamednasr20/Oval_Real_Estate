@@ -13,7 +13,7 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link, useLocation, useHistory, useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { handleChangeSearchType, getProperty } from '../../actions/globalState';
+import { handleChangeSearchType } from '../../actions/globalState';
 import useStyles from './styles';
 
 const Navbar = () => {
@@ -26,8 +26,8 @@ const Navbar = () => {
   const classes = useStyles(location);
   const matchPropertyDetailes = useRouteMatch('/search/:id');
 
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
 
   const changeBackground = () => {
@@ -53,7 +53,7 @@ const Navbar = () => {
       >
         <Container>
           <Toolbar>
-            {isSmallScreen && (
+            {isTablet && (
               <div>
                 <IconButton
                   className={classes.iconBtn}
@@ -79,7 +79,7 @@ const Navbar = () => {
                   </Button>
                 </div>
               )}
-            {isLargeScreen && location.pathname !== '/search' && (
+            {isDesktop && location.pathname !== '/search' && (
               <div>
                 <Link
                   to="/search"
@@ -119,7 +119,7 @@ const Navbar = () => {
 
             {location.pathname === '/search' && <SearchField />}
 
-            {isLargeScreen && (
+            {isDesktop && (
               <div style={{ marginLeft: 'auto' }}>
                 <Link to="/" className={classes.link} color="inherit">
                   Advertise
@@ -141,7 +141,7 @@ const Navbar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      {isSmallScreen && (
+      {isTablet && (
         <NavDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
       )}
     </div>

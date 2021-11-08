@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import useStyles from './styles';
 import PropertyCard from './PropertyCard/PropertyCard';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const List = ({ showMap }) => {
   const classes = useStyles();
