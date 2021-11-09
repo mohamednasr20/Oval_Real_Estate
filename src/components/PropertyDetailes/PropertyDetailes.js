@@ -1,5 +1,6 @@
 import React from 'react';
 import PriceHistory from './PriceHistory/PriceHistory';
+import ScheduleForm from './ScheduleForm/ScheduleForm';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -37,19 +38,20 @@ const PropertyDetailes = () => {
   return (
     <Container className={classes.root}>
       {property?.address ? (
-        <Grid container spacing={3}>
-          <Grid item xs={8}>
+        <Grid container spacing={4}>
+          <Grid className={classes.main} item xs={8}>
             <Typography
+              className={classes.lead}
               variant="subtitle2"
               gutterBottom
               color="textPrimary"
             >{`${property?.address.city} ${property?.address.state_code} ${property?.address.postal_code}`}</Typography>
 
-            <Typography variant="h5">
+            <Typography variant="h5" color="textSecondary">
               {`${property?.address.line} ${property?.address.city} ${property?.address.state_code}`}
             </Typography>
 
-            <div className={classes.flex}>
+            <div className={classes.flex} style={{ marginBottom: 18 }}>
               <SingleBedIcon />
               <Typography
                 variant="subtitle1"
@@ -67,72 +69,94 @@ const PropertyDetailes = () => {
               >{`${property?.building_size.size}${property?.building_size.units}`}</Typography>
             </div>
 
-            <Typography style={{ marginBottom: 42 }} paragraph variant="body1">
+            <Typography
+              className={classes.lead}
+              style={{ marginBottom: 42 }}
+              paragraph
+              variant="body1"
+            >
               {property?.description}
             </Typography>
             <Divider />
-            <Typography
-              style={{ marginTop: 42 }}
-              variant="h6"
-            >{`Home Detailes For  ${property?.address.line}`}</Typography>
-            <Grid container spacing={2} className={classes.detalies}>
-              <Grid item xs={4} className={classes.flex}>
-                <CheckIcon fontSize="small" className={classes.checkIcon} />
-                <Typography variant="subtitle2">
-                  {property?.prop_type.split('_').join(' ').toUpperCase()}
-                </Typography>
-              </Grid>
-              <Grid item xs={4} className={classes.flex}>
-                <CheckIcon fontSize="small" className={classes.checkIcon} />
-                <Typography variant="subtitle2">
-                  {`${property?.building_size.size}/${property?.building_size.units}`}
-                </Typography>
-              </Grid>
-              <Grid item xs={4} className={classes.flex}>
-                <CheckIcon fontSize="small" className={classes.checkIcon} />
-                <Typography variant="subtitle2">
-                  {`BUILT IN: ${property?.year_built}`}
-                </Typography>
-              </Grid>
-
-              {FeaturTags(property?.feature_tags)}
-            </Grid>
-            <Divider />
-            {property?.agents.length && (
-              <div>
-                <Typography variant="h6">Agents by</Typography>
-                <div className={classes.flex}>
-                  <Avatar
-                    alt="agent_photo"
-                    src={property.agents[0]?.photo?.href}
-                  />
-                  <Typography
-                    variant="subtitle2"
-                    style={{ margin: 8, marginRight: 'auto' }}
-                  >
-                    {property.agents[0]?.name}
+            <div className={classes.pSection}>
+              <Typography
+                className={classes.secondaryHeader}
+                style={{ marginTop: 42 }}
+                variant="h6"
+              >{`Home Detailes For  ${property?.address.line}`}</Typography>
+              <Grid container spacing={2} className={classes.detalies}>
+                <Grid item xs={4} className={classes.flex}>
+                  <CheckIcon fontSize="small" className={classes.checkIcon} />
+                  <Typography variant="subtitle2">
+                    {property?.prop_type.split('_').join(' ').toUpperCase()}
                   </Typography>
+                </Grid>
+                <Grid item xs={4} className={classes.flex}>
+                  <CheckIcon fontSize="small" className={classes.checkIcon} />
+                  <Typography variant="subtitle2">
+                    {`${property?.building_size.size}/${property?.building_size.units}`}
+                  </Typography>
+                </Grid>
+                <Grid item xs={4} className={classes.flex}>
+                  <CheckIcon fontSize="small" className={classes.checkIcon} />
+                  <Typography variant="subtitle2">
+                    {`BUILT IN: ${property?.year_built}`}
+                  </Typography>
+                </Grid>
 
-                  <Button color="secondary">
-                    Contact <ArrowForwardIosIcon fontSize="small" />
-                  </Button>
-                </div>
-              </div>
-            )}
+                {FeaturTags(property?.feature_tags)}
+              </Grid>
+            </div>
+
             <Divider />
-            <Typography variant="h6">Price trend history</Typography>
-            <PriceHistory events={property.property_history} />
+            <div className={classes.pSection}>
+              {property?.agents.length && (
+                <div>
+                  <Typography className={classes.secondaryHeader} variant="h6">
+                    Agents by
+                  </Typography>
+                  <div style={{ marginTop: 16 }} className={classes.flex}>
+                    <Avatar
+                      alt="agent_photo"
+                      src={property.agents[0]?.photo?.href}
+                    />
+                    <Typography
+                      variant="subtitle2"
+                      style={{ margin: 8, marginRight: 'auto' }}
+                    >
+                      {property.agents[0]?.name}
+                    </Typography>
+
+                    <Button color="secondary">
+                      Contact <ArrowForwardIosIcon fontSize="small" />
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Divider />
+            <div className={classes.pSection}>
+              <Typography className={classes.secondaryHeader} variant="h6">
+                Price trend history
+              </Typography>
+              <PriceHistory events={property.property_history} />
+            </div>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Typography variant="h6">{`$${property.price}`}</Typography>
             <div className={classes.flex}>
               <Typography
-                variant="subtitle2"
-                style={{ marginRight: 'auto', marginTop: 8 }}
+                className={`${classes.lead} ${classes.estimate}`}
+                variant="body2"
+                color="textSecondary"
               >{`EST.Mortagage $${property?.mortgage.estimate.monthly_payment}/mo`}</Typography>
               <Link href={property?.mortgage.rates_url} target="_blank">
                 Estimation
               </Link>
+            </div>
+            <div>
+              <ScheduleForm />
             </div>
           </Grid>
         </Grid>

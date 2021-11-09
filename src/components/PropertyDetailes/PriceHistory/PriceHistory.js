@@ -15,16 +15,16 @@ const PriceHistory = ({ events }) => {
         <TableHead className={classes.tableHead}>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>Price</TableCell>
-            <TableCell>Event</TableCell>
+            <TableCell align="right">Price</TableCell>
+            <TableCell align="right">Event</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {events?.map((event, i) => (
             <TableRow key={i}>
               <TableCell>{event.date.split('T')[0]}</TableCell>
-              <TableCell>{`$${event.price}`}</TableCell>
-              <TableCell>{event.event_name}</TableCell>
+              <TableCell align="right">{`$${event.price}`}</TableCell>
+              <TableCell align="right">{event.event_name}</TableCell>
             </TableRow>
           ))}
         </TableBody>
