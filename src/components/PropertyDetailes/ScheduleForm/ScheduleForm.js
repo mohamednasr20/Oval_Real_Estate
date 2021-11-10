@@ -23,7 +23,7 @@ const ScheduleForm = () => {
         <Button
           className={classes.meetTypeBtn}
           variant="contained"
-          color={meetType === 'inPerson' ? 'primary' : ''}
+          color={meetType === 'inPerson' ? 'primary' : 'default'}
           onClick={() => setMeetType('inPerson')}
         >
           In Person
@@ -31,7 +31,7 @@ const ScheduleForm = () => {
         <Button
           className={classes.meetTypeBtn}
           variant="contained"
-          color={meetType === 'virtual' ? 'primary' : ''}
+          color={meetType === 'virtual' ? 'primary' : 'default'}
           onClick={() => setMeetType('virtual')}
         >
           Virtual Meet
@@ -40,7 +40,6 @@ const ScheduleForm = () => {
           id="datetime-local"
           label="choose a time"
           type="datetime-local"
-          defaultValue={new Date()}
           className={classes.textField}
           InputLabelProps={{
             shrink: true,
