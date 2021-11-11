@@ -34,7 +34,7 @@ const SearchResults = () => {
   }, [searchParams, searchType]);
 
   return (
-    <Container className={classes.root}>
+    <Container maxWidth="xl" className={classes.root}>
       {!isLoading ? (
         <>
           <Typography className={classes.subtitle} variant="subtitle1">

@@ -16,8 +16,11 @@ const List = ({ showMap }) => {
         <Grid
           item
           style={{ margin: 'auto' }}
-          sx={12}
-          md={showMap ? 4 : 3}
+          xs={12}
+          sm={4}
+          md={showMap ? 6 : 4}
+          lg={showMap ? 4 : 3}
+          xl={showMap ? 3 : 2}
           key={property?.property_id}
         >
           <PropertyCard showMap={showMap} property={property} />

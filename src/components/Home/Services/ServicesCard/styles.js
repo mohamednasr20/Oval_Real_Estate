@@ -7,6 +7,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(2),
     borderRadius: 15,
     minHeight: 350,
+    [theme.breakpoints.up('lg')]: {
+      maxWidth: 600,
+      padding: theme.spacing(6, 10),
+    },
   },
   icon: {
     width: 72,

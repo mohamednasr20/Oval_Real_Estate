@@ -16,7 +16,7 @@ const Adventages = () => {
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const isTablet = useMediaQuery(theme.breakpoints.up('sm'));
   return (
-    <Container className={classes.root}>
+    <Container maxWidth="xl" className={classes.root}>
       <div>
         <Typograpy className={classes.subtitle} variant="subtitle2">
           ADVENTAGES

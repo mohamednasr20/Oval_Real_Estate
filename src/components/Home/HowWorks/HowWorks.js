@@ -42,7 +42,7 @@ const HowWorks = () => {
   };
 
   return (
-    <Container className={classes.root}>
+    <Container maxWidth="xl" className={classes.root}>
       <Typography className={classes.subtitle} variant="subtitle2">
         HOW IT WORKS
       </Typography>

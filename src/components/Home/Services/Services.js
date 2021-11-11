@@ -40,7 +40,7 @@ const Services = () => {
 
   const classes = useStyles();
   return (
-    <Container className={classes.root}>
+    <Container maxWidth="xl" className={classes.root}>
       <Typography className={classes.caption} variant="subtitle1">
         OUR SERVICES
       </Typography>

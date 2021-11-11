@@ -51,7 +51,7 @@ const Navbar = () => {
         color={navbar ? 'inherit' : 'transparent'}
         elevation={navbar || location.pathname !== '/' ? 6 : 0}
       >
-        <Container>
+        <Container maxWidth="xl">
           <Toolbar>
             {isTablet && (
               <div>

@@ -16,7 +16,7 @@ const Header = () => {
   const isTablet = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <div className={classes.root}>
-      <Container className={classes.container}>
+      <Container maxWidth="xl" className={classes.container}>
         <div className={classes.TextWrapper}>
           <Typography
             className={`${classes.subHeading} ${classes.heading}`}

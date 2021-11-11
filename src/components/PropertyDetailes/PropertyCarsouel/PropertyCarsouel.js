@@ -5,11 +5,11 @@ import useStyles from './styles';
 
 const responsive = {
   superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
+    breakpoint: { max: 4000, min: 1100 },
     items: 5,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
+    breakpoint: { max: 1100, min: 1024 },
     items: 3,
   },
   tablet: {

@@ -7,7 +7,7 @@ import HowWorks from './HowWorks/HowWorks';
 
 const Home = () => {
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Header />
       <Services />
       <Adventages />

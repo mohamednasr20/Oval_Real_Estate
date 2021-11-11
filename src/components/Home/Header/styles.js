@@ -4,7 +4,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: 710,
     width: '100%',
+    paddingLeft: 0,
     marginBottom: theme.spacing(6),
+
     [theme.breakpoints.up('sm')]: {
       height: 860,
     },
@@ -39,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
       top: 185,
       marginLeft: 0,
       marginRight: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      marginLeft: theme.spacing(3),
     },
   },
   heading: {
@@ -85,6 +90,10 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('md')]: {
       height: 660,
+    },
+    [theme.breakpoints.up('xl')]: {
+      left: 'auto',
+      maxWidth: 2000,
     },
   },
 }));
