@@ -9,28 +9,35 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import SmartphoneIcon from '@material-ui/icons/Smartphone';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import { useSelector } from 'react-redux';
 import useStyles from './styles';
 
 const ScheduleForm = ({ property }) => {
   const classes = useStyles();
+  const searchType = useSelector((state) => state.globalState.searchType);
   const [meetType, setMeetType] = useState('inPerson');
 
   return (
     <div className={classes.root}>
-      <Typography
-        className={classes.heading}
-        variant="h6"
-      >{`$${property.price}`}</Typography>
-      <div className={classes.flex}>
-        <Typography
-          className={`${classes.lead} ${classes.estimate}`}
-          variant="body2"
-          color="textSecondary"
-        >{`EST.Mortagage $${property?.mortgage.estimate.monthly_payment}/mo`}</Typography>
-        <Link href={property?.mortgage.rates_url} target="_blank">
-          Estimation
-        </Link>
-      </div>
+      {searchType === 'list-for-sale' && (
+        <div>
+          <Typography
+            className={classes.heading}
+            variant="h6"
+          >{`$${property.price}`}</Typography>
+          <div className={classes.flex}>
+            <Typography
+              className={`${classes.lead} ${classes.estimate}`}
+              variant="body2"
+              color="textSecondary"
+            >{`EST.Mortagage $${property?.mortgage.estimate.monthly_payment}/mo`}</Typography>
+            <Link href={property?.mortgage.rates_url} target="_blank">
+              Estimation
+            </Link>
+          </div>
+        </div>
+      )}
+
       <Typography className={classes.secondaryHeader} variant="h6" gutterBottom>
         Schedule a tour
       </Typography>

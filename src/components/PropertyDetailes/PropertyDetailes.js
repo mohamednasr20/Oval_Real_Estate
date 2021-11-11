@@ -31,6 +31,7 @@ const PropertyDetailes = () => {
   const { id } = useParams();
 
   const property = useSelector((state) => state.globalState.selectedProperty);
+  const searchType = useSelector((state) => state.globalState.searchType);
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
@@ -159,12 +160,15 @@ const PropertyDetailes = () => {
               </div>
 
               <Divider />
-              <div className={classes.pSection}>
-                <Typography className={classes.secondaryHeader} variant="h6">
-                  Price trend history
-                </Typography>
-                <PriceHistory events={property.property_history} />
-              </div>
+
+              {searchType !== 'list-for-rent' && (
+                <div className={classes.pSection}>
+                  <Typography className={classes.secondaryHeader} variant="h6">
+                    Price trend history
+                  </Typography>
+                  <PriceHistory events={property.property_history} />
+                </div>
+              )}
             </Grid>
             {isDesktop && (
               <Grid item xs={3}>
@@ -175,7 +179,7 @@ const PropertyDetailes = () => {
             )}
           </Grid>
         ) : (
-          <CircularProgress />
+          <CircularProgress className={classes.loading} />
         )}
       </Container>
     </div>

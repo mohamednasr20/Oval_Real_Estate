@@ -50,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
   detalies: {
     margin: theme.spacing(4, 0),
   },
+  loading: {
+    textAlign: 'center',
+    marginTop: theme.spacing(6),
+    margin: 'auto',
+  },
 }));
 
 export default useStyles;
