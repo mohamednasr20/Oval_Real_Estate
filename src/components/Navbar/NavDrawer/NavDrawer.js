@@ -10,7 +10,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
   const theme = useTheme();
   const classes = useStyles();
-  const matchMidScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <Drawer className={classes.root} open={drawerOpen}>
@@ -18,22 +18,42 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
         <div className={classes.closeIconWrap}>
           <CloseIcon onClick={() => setDrawerOpen(false)} />
         </div>
-        <Link className={classes.link} to="/search">
+        <Link
+          className={classes.link}
+          to="/search"
+          onClick={() => setDrawerOpen(false)}
+        >
           Buy
         </Link>
-        <Link className={classes.link} to="/search">
+        <Link
+          className={classes.link}
+          to="/search"
+          onClick={() => setDrawerOpen(false)}
+        >
           Rent
         </Link>
-        <Link className={classes.link} to="/search">
+        <Link
+          className={classes.link}
+          to="/search"
+          onClick={() => setDrawerOpen(false)}
+        >
           Home Loan
         </Link>
-        <Link className={classes.link} to="">
+        <Link
+          className={classes.link}
+          to=""
+          onClick={() => setDrawerOpen(false)}
+        >
           advertise
         </Link>
-        <Link className={classes.link} to="">
+        <Link
+          className={classes.link}
+          to=""
+          onClick={() => setDrawerOpen(false)}
+        >
           Help
         </Link>
-        {matchMidScreen && (
+        {isMobile && (
           <Button
             className={classes.authBtn}
             variant="contained"
