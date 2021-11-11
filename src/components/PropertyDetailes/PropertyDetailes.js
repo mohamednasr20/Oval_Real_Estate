@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropertyCarsouel from './PropertyCarsouel/PropertyCarsouel';
 import PriceHistory from './PriceHistory/PriceHistory';
 import ScheduleForm from './ScheduleForm/ScheduleForm';
@@ -7,13 +7,18 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
-import Link from '@material-ui/core/Link';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import SingleBedIcon from '@material-ui/icons/SingleBed';
 import BathtubIcon from '@material-ui/icons/Bathtub';
 import SquareFootIcon from '@material-ui/icons/SquareFoot';
 import CheckIcon from '@material-ui/icons/Check';
+
+import { getProperty } from '../../actions/globalState';
+
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import useStyles from './styles';
 import { Button } from '@material-ui/core';
@@ -21,13 +26,19 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const PropertyDetailes = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
   const property = useSelector((state) => state.globalState.selectedProperty);
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
   const FeaturTags = (features) =>
-    features.map(
+    features?.map(
       (feature, i) =>
         i < 9 && (
-          <Grid item xs={4} className={classes.flex} key={feature}>
+          <Grid item xs={6} sm={4} className={classes.flex} key={feature}>
             <CheckIcon fontSize="small" className={classes.checkIcon} />
             <Typography variant="subtitle2">
               {feature.split('_').join(' ').toUpperCase()}
@@ -36,14 +47,18 @@ const PropertyDetailes = () => {
         )
     );
 
+  useEffect(() => {
+    dispatch(getProperty(id));
+  }, [id]);
+
   return (
     <div className={classes.root}>
-      <PropertyCarsouel photos={property.photos} />
+      {property.photos && <PropertyCarsouel photos={property?.photos} />}
 
       <Container>
         {property?.address ? (
           <Grid container spacing={4}>
-            <Grid className={classes.main} item xs={8}>
+            <Grid className={classes.main} item xs={12} md={8}>
               <Typography
                 className={classes.lead}
                 variant="subtitle2"
@@ -82,6 +97,7 @@ const PropertyDetailes = () => {
                 {property?.description}
               </Typography>
               <Divider />
+              {isTablet && <ScheduleForm property={property} />}
               <div className={classes.pSection}>
                 <Typography
                   className={classes.secondaryHeader}
@@ -89,19 +105,19 @@ const PropertyDetailes = () => {
                   variant="h6"
                 >{`Home Detailes For  ${property?.address.line}`}</Typography>
                 <Grid container spacing={2} className={classes.detalies}>
-                  <Grid item xs={4} className={classes.flex}>
+                  <Grid item xs={6} sm={4} className={classes.flex}>
                     <CheckIcon fontSize="small" className={classes.checkIcon} />
                     <Typography variant="subtitle2">
                       {property?.prop_type.split('_').join(' ').toUpperCase()}
                     </Typography>
                   </Grid>
-                  <Grid item xs={4} className={classes.flex}>
+                  <Grid item xs={6} sm={4} className={classes.flex}>
                     <CheckIcon fontSize="small" className={classes.checkIcon} />
                     <Typography variant="subtitle2">
                       {`${property?.building_size.size}/${property?.building_size.units}`}
                     </Typography>
                   </Grid>
-                  <Grid item xs={4} className={classes.flex}>
+                  <Grid item xs={6} sm={4} className={classes.flex}>
                     <CheckIcon fontSize="small" className={classes.checkIcon} />
                     <Typography variant="subtitle2">
                       {`BUILT IN: ${property?.year_built}`}
@@ -150,22 +166,13 @@ const PropertyDetailes = () => {
                 <PriceHistory events={property.property_history} />
               </div>
             </Grid>
-            <Grid item xs={3}>
-              <Typography variant="h6">{`$${property.price}`}</Typography>
-              <div className={classes.flex}>
-                <Typography
-                  className={`${classes.lead} ${classes.estimate}`}
-                  variant="body2"
-                  color="textSecondary"
-                >{`EST.Mortagage $${property?.mortgage.estimate.monthly_payment}/mo`}</Typography>
-                <Link href={property?.mortgage.rates_url} target="_blank">
-                  Estimation
-                </Link>
-              </div>
-              <div>
-                <ScheduleForm />
-              </div>
-            </Grid>
+            {isDesktop && (
+              <Grid item xs={3}>
+                <div>
+                  <ScheduleForm property={property} />
+                </div>
+              </Grid>
+            )}
           </Grid>
         ) : (
           <CircularProgress />

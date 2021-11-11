@@ -31,7 +31,7 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
 
   const changeBackground = () => {
-    if (window.scrollY >= 66) {
+    if (window.scrollY >= 30) {
       setNavbar(true);
     } else {
       setNavbar(false);

@@ -11,24 +11,17 @@ import SquareFootIcon from '@material-ui/icons/SquareFoot';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import notFoundImage from '../../../../assets/noImageFound.png';
-import { getProperty } from '../../../../actions/globalState';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import useStyles from './styles';
 
 const PropertyCard = ({ showMap, isFavorite, property }) => {
   const classes = useStyles(showMap);
-  const dispatch = useDispatch();
   const history = useHistory();
-  const getPropertyDetailes = async (propertyId) => {
-    dispatch(getProperty(propertyId));
-    history.push(`/search/${propertyId}`);
-  };
 
   return (
     <Card
       className={classes.root}
-      onClick={() => getPropertyDetailes(property.property_id)}
+      onClick={() => history.push(`/search/${property.property_id}`)}
     >
       <CardActionArea>
         <CardMedia

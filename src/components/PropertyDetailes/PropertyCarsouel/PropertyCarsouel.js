@@ -4,16 +4,20 @@ import 'react-multi-carousel/lib/styles.css';
 import useStyles from './styles';
 
 const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 710 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 710, min: 0 },
     items: 1,
   },
 };
@@ -23,11 +27,12 @@ const PropertyCarsouel = ({ photos }) => {
 
   return (
     <Carousel className={classes.carousel} responsive={responsive}>
-      {photos?.map((photo, i) => (
-        <div className={classes.imgDiv} key={i}>
-          <img alt="property_img" src={photo?.href} />
-        </div>
-      ))}
+      {photos?.length &&
+        photos?.map((photo, i) => (
+          <div className={classes.imgDiv} key={i}>
+            <img alt="property_img" src={photo?.href} />
+          </div>
+        ))}
     </Carousel>
   );
 };

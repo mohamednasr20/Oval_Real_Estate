@@ -2,14 +2,23 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    paddingRight: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
     marginTop: theme.spacing(14),
+
     '& h5': {
       margin: theme.spacing(2, 0),
-      fontSize: 34,
+      fontSize: 20,
       fontWeight: '600',
+      [theme.breakpoints.up('sm')]: {
+        fontSize: 34,
+      },
     },
   },
-  main: { marginRight: theme.spacing(5) },
+  main: {
+    [theme.breakpoints.up('md')]: { marginRight: theme.spacing(5) },
+  },
+
   lead: {
     fontWeight: '400',
     fontSize: 16,
@@ -19,14 +28,13 @@ const useStyles = makeStyles((theme) => ({
   },
   secondaryHeader: {
     fontWeight: '600',
-    fontSize: 22,
+    fontSize: 18,
     marginBottom: theme.spacing(4),
+    [theme.breakpoints.up('sm')]: {
+      fontSize: 22,
+    },
   },
-  estimate: {
-    marginRight: 'auto',
-    fontSize: 12,
-    marginBottom: theme.spacing(5),
-  },
+
   flex: {
     display: 'flex',
     '& h6': {
