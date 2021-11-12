@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import SearchResults from './components/SearchResults/SearchResults';
 import PropertyDetailes from './components/PropertyDetailes/PropertyDetailes';
+import './firebase/config';
 import { theme } from './theme';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';

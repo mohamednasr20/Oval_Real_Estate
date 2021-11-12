@@ -50,6 +50,7 @@ const PropertyDetailes = () => {
 
   useEffect(() => {
     dispatch(getProperty(id));
+    // eslint-disable-next-line
   }, [id]);
 
   return (
