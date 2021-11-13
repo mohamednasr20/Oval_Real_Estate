@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import SearchResults from './components/SearchResults/SearchResults';
 import PropertyDetailes from './components/PropertyDetailes/PropertyDetailes';
+import Auth from './components/Auth/Auth';
 import './firebase/config';
 import { theme } from './theme';
 
@@ -14,6 +15,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
         <Navbar />
+        <Auth />
         <Switch>
           <Route path="/" exact>
             <Home />

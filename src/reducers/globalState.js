@@ -4,6 +4,7 @@ import {
   SEARCH_TYPE,
   IS_LOADING,
   FETCH_PROPERTY,
+  SHOW_AUTH,
 } from '../constants/actionTypes';
 
 const initalState = {
@@ -22,6 +23,7 @@ const initalState = {
   searchType: 'list-for-sale',
   isLoading: true,
   selectedProperty: {},
+  showAuth: false,
 };
 
 export const globalState = (state = initalState, action) => {
@@ -39,6 +41,8 @@ export const globalState = (state = initalState, action) => {
       return { ...state, isLoading: action.payload };
     case FETCH_PROPERTY:
       return { ...state, selectedProperty: action.payload };
+    case SHOW_AUTH:
+      return { ...state, showAuth: action.payload };
     default:
       return state;
   }

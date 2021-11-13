@@ -13,7 +13,10 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link, useLocation, useHistory, useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { handleChangeSearchType } from '../../actions/globalState';
+import {
+  handleChangeSearchType,
+  handleShowAuthModal,
+} from '../../actions/globalState';
 import useStyles from './styles';
 
 const Navbar = () => {
@@ -122,10 +125,10 @@ const Navbar = () => {
             {isDesktop && (
               <div style={{ marginLeft: 'auto' }}>
                 <Link to="/" className={classes.link} color="inherit">
-                  Advertise
+                  Saved Homes
                 </Link>
                 <Link to="/" className={classes.link} color="inherit">
-                  Help
+                  Saved Searches
                 </Link>
               </div>
             )}
@@ -134,6 +137,7 @@ const Navbar = () => {
                 className={classes.authBtn}
                 variant="contained"
                 color="primary"
+                onClick={() => dispatch(handleShowAuthModal(true))}
               >
                 Sign Up
               </Button>

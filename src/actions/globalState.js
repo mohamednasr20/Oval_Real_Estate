@@ -4,6 +4,7 @@ import {
   IS_LOADING,
   SEARCH_PARAMS,
   SEARCH_TYPE,
+  SHOW_AUTH,
 } from '../constants/actionTypes';
 import * as api from '../api';
 
@@ -38,4 +39,8 @@ export const onChangeSearchParams = (params, param) => (dispatch) => {
 
 export const handleLoading = (boolean) => (dispatch) => {
   dispatch({ type: IS_LOADING, payload: boolean });
+};
+
+export const handleShowAuthModal = (boolean) => (dispatch) => {
+  dispatch({ type: SHOW_AUTH, payload: boolean });
 };
