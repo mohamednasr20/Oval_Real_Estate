@@ -123,7 +123,7 @@ const Navbar = () => {
             {location.pathname === '/search' && <SearchField />}
 
             {isDesktop && (
-              <div style={{ marginLeft: 'auto' }}>
+              <div style={matchPropertyDetailes && { marginLeft: 'auto' }}>
                 <Link to="/" className={classes.link} color="inherit">
                   Saved Homes
                 </Link>

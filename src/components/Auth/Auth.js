@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { handleShowAuthModal } from '../../actions/globalState';
+import { signUp } from '../../firebase/auth';
 import useStyles from './styles';
 
 const Auth = () => {
@@ -13,10 +14,15 @@ const Auth = () => {
   const dispatch = useDispatch();
   const showAuth = useSelector((state) => state.globalState.showAuth);
   const [signIn, setSignIn] = useState(false);
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control, reset } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      await signUp(data);
+      reset({ firstName: '', lastName: '', email: '', password: '' });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -37,7 +43,6 @@ const Auth = () => {
                 name="firstName"
                 control={control}
                 defaultValue=""
-                rules={{ required: 'First name required' }}
                 render={({
                   field: { onChange, value },
                   fieldState: { error },
@@ -62,7 +67,6 @@ const Auth = () => {
                 name="lastName"
                 control={control}
                 defaultValue=""
-                rules={{ required: 'Last name required' }}
                 render={({
                   field: { onChange, value },
                   fieldState: { error },
@@ -88,7 +92,6 @@ const Auth = () => {
             name="email"
             control={control}
             defaultValue=""
-            rules={{ required: 'email required' }}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <TextField
                 className={classes.textField}
@@ -110,7 +113,6 @@ const Auth = () => {
             name="password"
             control={control}
             defaultValue=""
-            rules={{ required: 'password required' }}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <TextField
                 className={classes.textField}
@@ -130,34 +132,6 @@ const Auth = () => {
             rules={{ required: 'Password required' }}
           />
 
-          {!signIn && (
-            <Controller
-              name="confirmPassword"
-              control={control}
-              defaultValue=""
-              rules={{ required: 'confirm Password  required' }}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <TextField
-                  className={classes.textField}
-                  fullWidth
-                  variant="outlined"
-                  size="small"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  placeholder="Confirm Password"
-                  type="password"
-                  value={value}
-                  onChange={onChange}
-                  error={!!error}
-                  helperText={error ? error.message : null}
-                />
-              )}
-              rules={{ required: 'Password confirm required' }}
-            />
-          )}
           <Button type="submit" variant="contained" fullWidth color="primary">
             {signIn ? 'Log In' : 'Sign Up'}
           </Button>
