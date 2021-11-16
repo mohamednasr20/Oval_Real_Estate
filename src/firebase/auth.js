@@ -17,5 +17,6 @@ export const signUp = async (data) => {
   await updateProfile(res.user, {
     displayName: `${data.firstName} ${data.lastName}`,
   });
-  console.log(res);
 };
+
+export const logOut = () => auth.signOut();

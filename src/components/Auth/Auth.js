@@ -20,6 +20,7 @@ const Auth = () => {
     try {
       await signUp(data);
       reset({ firstName: '', lastName: '', email: '', password: '' });
+      dispatch(handleShowAuthModal(false));
     } catch (error) {
       console.log(error);
     }

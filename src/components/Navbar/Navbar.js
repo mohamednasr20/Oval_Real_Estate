@@ -7,19 +7,24 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Avatar from '@material-ui/core/Avatar';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import logo from '../../assets/logo.png';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link, useLocation, useHistory, useRouteMatch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   handleChangeSearchType,
   handleShowAuthModal,
 } from '../../actions/globalState';
+import { logOut } from '../../firebase/auth';
 import useStyles from './styles';
 
 const Navbar = () => {
+  const user = useSelector((state) => state.userState.user);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const theme = useTheme();
@@ -29,9 +34,23 @@ const Navbar = () => {
   const classes = useStyles(location);
   const matchPropertyDetailes = useRouteMatch('/search/:id');
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const logOutUser = () => {
+    handleClose();
+    logOut();
+  };
+
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
   const changeBackground = () => {
     if (window.scrollY >= 30) {
@@ -132,15 +151,39 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
-            {isMobile && (
+            {!isMobile && !user && (
               <Button
                 className={classes.authBtn}
                 variant="contained"
                 color="primary"
                 onClick={() => dispatch(handleShowAuthModal(true))}
               >
-                Sign Up
+                sign up
               </Button>
+            )}
+            {user && (
+              <div>
+                <Avatar onClick={handleMenu}>
+                  {user?.displayName?.slice(0, 1)}
+                </Avatar>
+                <Menu
+                  id="profile-avatar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={logOutUser}>logout</MenuItem>
+                </Menu>
+              </div>
             )}
           </Toolbar>
         </Container>
