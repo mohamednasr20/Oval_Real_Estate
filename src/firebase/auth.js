@@ -2,6 +2,7 @@ import {
   getAuth,
   updateProfile,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from 'firebase/auth';
 import './config';
 
@@ -17,6 +18,12 @@ export const signUp = async (data) => {
   await updateProfile(res.user, {
     displayName: `${data.firstName} ${data.lastName}`,
   });
+  return res.user;
 };
 
 export const logOut = () => auth.signOut();
+
+export const login = async ({ email, password }) => {
+  const res = await signInWithEmailAndPassword(auth, email, password);
+  return res.user;
+};

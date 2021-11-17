@@ -6,20 +6,25 @@ import Button from '@material-ui/core/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { handleShowAuthModal } from '../../actions/globalState';
-import { signUp } from '../../firebase/auth';
+import { signUp, login } from '../../firebase/auth';
 import useStyles from './styles';
 
 const Auth = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const showAuth = useSelector((state) => state.globalState.showAuth);
-  const [signIn, setSignIn] = useState(false);
+  const [login, setLogin] = useState(false);
   const { handleSubmit, control, reset } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      await signUp(data);
-      reset({ firstName: '', lastName: '', email: '', password: '' });
+      if (login) {
+        await login(data);
+        reset({ email: '', password: '' });
+      } else {
+        await signUp(data);
+        reset({ firstName: '', lastName: '', email: '', password: '' });
+      }
       dispatch(handleShowAuthModal(false));
     } catch (error) {
       console.log(error);
@@ -36,9 +41,9 @@ const Auth = () => {
       >
         <form className={classes.paper} onSubmit={handleSubmit(onSubmit)}>
           <Typography gutterBottom variant="h5">
-            {signIn ? 'Log in' : 'Sign up'}
+            {login ? 'Log in' : 'Sign up'}
           </Typography>
-          {!signIn && (
+          {!login && (
             <div className={classes.nameFields}>
               <Controller
                 name="firstName"
@@ -134,14 +139,14 @@ const Auth = () => {
           />
 
           <Button type="submit" variant="contained" fullWidth color="primary">
-            {signIn ? 'Log In' : 'Sign Up'}
+            {login ? 'Log In' : 'Sign Up'}
           </Button>
           <Typography
             className={classes.changeForm}
             variant="h6"
-            onClick={() => setSignIn(!signIn)}
+            onClick={() => setLogin(!login)}
           >
-            {signIn
+            {login
               ? "Dont't have acount?Sign Up"
               : 'Have already acount? Log In'}
           </Typography>
