@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import './config';
+import { createUserDocument } from './user';
 
 const auth = getAuth();
 
@@ -15,10 +16,15 @@ export const signUp = async (data) => {
     data.password
   );
 
-  await updateProfile(res.user, {
+  const user = res.user;
+
+  await updateProfile(user, {
     displayName: `${data.firstName} ${data.lastName}`,
   });
-  return res.user;
+
+  await createUserDocument(user);
+
+  return user;
 };
 
 export const logOut = () => auth.signOut();
