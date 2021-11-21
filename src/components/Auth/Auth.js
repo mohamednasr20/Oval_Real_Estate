@@ -13,12 +13,12 @@ const Auth = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const showAuth = useSelector((state) => state.globalState.showAuth);
-  const [login, setLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const { handleSubmit, control, reset } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      if (login) {
+      if (isLogin) {
         await login(data);
         reset({ email: '', password: '' });
       } else {
@@ -41,9 +41,9 @@ const Auth = () => {
       >
         <form className={classes.paper} onSubmit={handleSubmit(onSubmit)}>
           <Typography gutterBottom variant="h5">
-            {login ? 'Log in' : 'Sign up'}
+            {isLogin ? 'Log in' : 'Sign up'}
           </Typography>
-          {!login && (
+          {!isLogin && (
             <div className={classes.nameFields}>
               <Controller
                 name="firstName"
@@ -139,14 +139,14 @@ const Auth = () => {
           />
 
           <Button type="submit" variant="contained" fullWidth color="primary">
-            {login ? 'Log In' : 'Sign Up'}
+            {isLogin ? 'Log In' : 'Sign Up'}
           </Button>
           <Typography
             className={classes.changeForm}
             variant="h6"
-            onClick={() => setLogin(!login)}
+            onClick={() => setIsLogin(!isLogin)}
           >
-            {login
+            {isLogin
               ? "Dont't have acount?Sign Up"
               : 'Have already acount? Log In'}
           </Typography>

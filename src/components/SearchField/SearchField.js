@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-import { onChangeSearchParams } from '../../actions/globalState';
+import { onChangeSearchParams, handleLoading } from '../../actions/globalState';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocationAutoComplete } from '../../api';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -34,9 +34,9 @@ const SearchField = () => {
     : { postal_code: searchLocation };
 
   const handleSearchLocation = (searchParams, newParams) => {
-    history.push('/search');
-    console.log(searchParams);
     dispatch(onChangeSearchParams(searchParams, newParams));
+    dispatch(handleLoading(false));
+    history.push('/search');
   };
 
   const getNewOptions = async () => {

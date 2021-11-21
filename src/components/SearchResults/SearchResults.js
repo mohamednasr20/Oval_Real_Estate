@@ -27,7 +27,6 @@ const SearchResults = () => {
     : `${searchParams?.city}, ${searchParams?.state_code}`;
 
   useEffect(() => {
-    dispatch(handleLoading(true));
     dispatch(getProperties(searchParams, searchType));
     dispatch(handleLoading(false));
     // eslint-disable-next-line
