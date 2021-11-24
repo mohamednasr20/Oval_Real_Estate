@@ -5,6 +5,8 @@ import { db } from '../../firebase/config';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+
+import { useHistory } from 'react-router';
 import useStyles from './styles';
 
 const SavedHomes = () => {
@@ -12,6 +14,7 @@ const SavedHomes = () => {
 
   const user = useSelector((state) => state.userState.user);
   const classes = useStyles();
+  const history = useHistory();
 
   useEffect(() => {
     const unsub = () => {
@@ -44,7 +47,8 @@ const SavedHomes = () => {
             <Button
               className={classes.btn}
               variant="contained"
-              color="secondary"
+              color="primary"
+              onClick={() => history.push('/search')}
             >
               Search Homes
             </Button>
