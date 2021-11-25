@@ -10,7 +10,10 @@ import Popover from '@material-ui/core/Popover';
 import SettingsInputCompositeIcon from '@material-ui/icons/SettingsInputComposite';
 import { useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { handleChangeSearchType } from '../../../actions/globalState';
+import {
+  handleChangeSearchType,
+  handleShowAuthModal,
+} from '../../../actions/globalState';
 import { updateUserDocument } from '../../../firebase/user';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useStyles from './styles';
@@ -23,7 +26,7 @@ const SearchFilter = ({ showMap, setShowMap }) => {
   const searchType = useSelector((state) => state.globalState.searchType);
   const searchParams = useSelector((state) => state.globalState.searchParams);
   const user = useSelector((state) => state.userState.user);
-  // const userDocument = useSelector((state) => state.userState.userDocument);
+  const userDocument = useSelector((state) => state.userState.userDocument);
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
@@ -40,9 +43,36 @@ const SearchFilter = ({ showMap, setShowMap }) => {
     setAnchorEl(null);
   };
 
+  const isSearchSaved = (savedObjects, object) => {
+    const comparedObjects = (object1, object2) => {
+      const keys1 = Object.keys(object1);
+      const keys2 = Object.keys(object2);
+      if (keys1.length !== keys2.length) {
+        return false;
+      }
+
+      for (let key of keys1) {
+        if (object1[key] !== object2[key]) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    return savedObjects.find((obj) => comparedObjects(object, obj))
+      ? true
+      : false;
+  };
+
+  const isSaved = isSearchSaved(userDocument.savedSearches, searchParams);
+
   const handleSavedSearch = async () => {
-    if (!user) return;
-    await updateUserDocument(user, 'savedSearches', searchParams);
+    if (isSaved) return;
+    if (!user) {
+      dispatch(handleShowAuthModal(true));
+    } else {
+      await updateUserDocument(user, 'savedSearches', searchParams, 'add');
+    }
   };
 
   return (
@@ -117,7 +147,7 @@ const SearchFilter = ({ showMap, setShowMap }) => {
         color="primary"
         onClick={handleSavedSearch}
       >
-        Save Search
+        {isSaved ? 'Search Saved' : 'Save Search'}
       </Button>
 
       <FormControl className={classes.toggleMap}>

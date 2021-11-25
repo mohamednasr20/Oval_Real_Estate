@@ -16,6 +16,7 @@ const SavedHomes = () => {
   return (
     <Container maxWidth="xl" className={classes.root}>
       <Typography variant="h4">Saved Homes</Typography>
+
       {userDocument?.savedHomes?.length ? (
         <div className={classes.listContainer}>
           <List showMap={false} properties={userDocument.savedHomes} />
