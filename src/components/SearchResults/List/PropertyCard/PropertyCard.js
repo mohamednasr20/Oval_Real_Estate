@@ -11,12 +11,32 @@ import SquareFootIcon from '@material-ui/icons/SquareFoot';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import notFoundImage from '../../../../assets/noImageFound.png';
+import { updateUserDocument } from '../../../../firebase/user';
+import { handleShowAuthModal } from '../../../../actions/globalState';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import useStyles from './styles';
 
-const PropertyCard = ({ showMap, isFavorite, property }) => {
+const PropertyCard = ({ showMap, property }) => {
   const classes = useStyles(showMap);
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.userState.user);
+  const userDocument = useSelector((state) => state.userState.userDocument);
+
+  const isFavorite = userDocument?.savedHomes?.find(
+    (h) => h.property_id === property.property_id
+  );
+
+  const handleSaveProperty = async () => {
+    if (!user) {
+      dispatch(handleShowAuthModal(true));
+    } else {
+      const actionType = isFavorite ? 'remove' : 'add';
+      await updateUserDocument(user, 'savedHomes', property, actionType);
+    }
+  };
 
   return (
     <Card
@@ -53,8 +73,18 @@ const PropertyCard = ({ showMap, isFavorite, property }) => {
           <Typography variant="subtitle1">{`${property?.address_new.city}, ${property?.address_new.state}`}</Typography>
         </CardContent>
       </CardActionArea>
-      <div className={classes.favoriteIcon}>
-        {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+      <div
+        className={classes.favoriteIcon}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleSaveProperty();
+        }}
+      >
+        {isFavorite ? (
+          <FavoriteIcon className={classes.iconRed} />
+        ) : (
+          <FavoriteBorderIcon />
+        )}
       </div>
       {property.is_new_construction && (
         <Chip className={classes.chip} label="NEW" />

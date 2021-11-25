@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     height: '50vh',
     textAlign: 'center',
   },
+
+  listContainer: {
+    marginTop: theme.spacing(6),
+  },
   lead: {
     maxWidth: 280,
     marginBottom: theme.spacing(3),

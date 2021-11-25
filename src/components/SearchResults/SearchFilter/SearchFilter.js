@@ -11,6 +11,7 @@ import SettingsInputCompositeIcon from '@material-ui/icons/SettingsInputComposit
 import { useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleChangeSearchType } from '../../../actions/globalState';
+import { updateUserDocument } from '../../../firebase/user';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useStyles from './styles';
 
@@ -20,6 +21,9 @@ const SearchFilter = ({ showMap, setShowMap }) => {
   const dispatch = useDispatch();
 
   const searchType = useSelector((state) => state.globalState.searchType);
+  const searchParams = useSelector((state) => state.globalState.searchParams);
+  const user = useSelector((state) => state.userState.user);
+  // const userDocument = useSelector((state) => state.userState.userDocument);
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
@@ -34,6 +38,11 @@ const SearchFilter = ({ showMap, setShowMap }) => {
 
   const handleClosePoper = () => {
     setAnchorEl(null);
+  };
+
+  const handleSavedSearch = async () => {
+    if (!user) return;
+    await updateUserDocument(user, 'savedSearches', searchParams);
   };
 
   return (
@@ -102,7 +111,12 @@ const SearchFilter = ({ showMap, setShowMap }) => {
       )}
 
       {isLargeScreen && <FIlterWraper />}
-      <Button className={classes.saveSearch} variant="outlined" color="primary">
+      <Button
+        className={classes.saveSearch}
+        variant="outlined"
+        color="primary"
+        onClick={handleSavedSearch}
+      >
         Save Search
       </Button>
 

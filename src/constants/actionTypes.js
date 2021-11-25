@@ -5,3 +5,4 @@ export const IS_LOADING = 'IS_LOADING';
 export const FETCH_PROPERTY = 'FETCH_PROPERTY';
 export const SHOW_AUTH = 'SHOW_AUTH';
 export const USER_AUTH = 'USER_AUTH';
+export const USER_DOCUMENT = 'USER_DOCUMENT';

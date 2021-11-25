@@ -46,6 +46,7 @@ const Navbar = () => {
   const logOutUser = () => {
     handleClose();
     logOut();
+    history.push('/');
   };
 
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
@@ -64,6 +65,14 @@ const Navbar = () => {
     changeBackground();
     window.addEventListener('scroll', changeBackground);
   });
+
+  const handleSavedData = (location) => {
+    if (!user) {
+      dispatch(handleShowAuthModal(true));
+    } else {
+      history.push(location);
+    }
+  };
 
   return (
     <div className={classes.grow}>
@@ -143,12 +152,20 @@ const Navbar = () => {
 
             {isDesktop && (
               <div style={matchPropertyDetailes && { marginLeft: 'auto' }}>
-                <Link to="/" className={classes.link} color="inherit">
+                <Button
+                  onClick={() => handleSavedData('/savedHomes')}
+                  className={classes.link}
+                  color="inherit"
+                >
                   Saved Homes
-                </Link>
-                <Link to="/" className={classes.link} color="inherit">
+                </Button>
+                <Button
+                  onClick={() => handleSavedData('/savedSearch')}
+                  className={classes.link}
+                  color="inherit"
+                >
                   Saved Searches
-                </Link>
+                </Button>
               </div>
             )}
             {!isMobile && !user && (

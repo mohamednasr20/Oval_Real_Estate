@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
     color: '#ffffff',
     cursor: 'pointer',
   },
+
+  iconRed: {
+    color: '#d32f2f',
+  },
   chip: {
     position: 'absolute',
     top: theme.spacing(1),
