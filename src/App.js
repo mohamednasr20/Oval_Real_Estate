@@ -6,6 +6,7 @@ import SearchResults from './components/SearchResults/SearchResults';
 import PropertyDetailes from './components/PropertyDetailes/PropertyDetailes';
 import Auth from './components/Auth/Auth';
 import SavedHomes from './components/SavedHomes/SavedHomes';
+import SavedSearches from './components/SavedSearches/SavedSearches';
 import './firebase/config';
 import { db } from './firebase/config';
 import { doc, onSnapshot } from 'firebase/firestore';
@@ -62,6 +63,9 @@ const App = () => {
           </Route>
           <Route path="/savedHomes">
             <SavedHomes />
+          </Route>
+          <Route>
+            <SavedSearches />
           </Route>
         </Switch>
       </Router>

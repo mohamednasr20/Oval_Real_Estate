@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 280,
     marginBottom: theme.spacing(3),
   },
-  btn: {
-    color: '#ffffff',
-  },
 }));
 
 export default useStyles;

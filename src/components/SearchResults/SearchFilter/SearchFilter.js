@@ -15,6 +15,7 @@ import {
   handleShowAuthModal,
 } from '../../../actions/globalState';
 import { updateUserDocument } from '../../../firebase/user';
+import { v4 as uuidv4 } from 'uuid';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useStyles from './styles';
 
@@ -46,10 +47,6 @@ const SearchFilter = ({ showMap, setShowMap }) => {
   const isSearchSaved = (savedObjects, object) => {
     const comparedObjects = (object1, object2) => {
       const keys1 = Object.keys(object1);
-      const keys2 = Object.keys(object2);
-      if (keys1.length !== keys2.length) {
-        return false;
-      }
 
       for (let key of keys1) {
         if (object1[key] !== object2[key]) {
@@ -59,19 +56,21 @@ const SearchFilter = ({ showMap, setShowMap }) => {
       return true;
     };
 
-    return savedObjects.find((obj) => comparedObjects(object, obj))
+    return savedObjects?.find((obj) => comparedObjects(object, obj))
       ? true
       : false;
   };
 
-  const isSaved = isSearchSaved(userDocument.savedSearches, searchParams);
+  const isSaved = isSearchSaved(userDocument?.savedSearches, searchParams);
 
   const handleSavedSearch = async () => {
     if (isSaved) return;
     if (!user) {
       dispatch(handleShowAuthModal(true));
     } else {
-      await updateUserDocument(user, 'savedSearches', searchParams, 'add');
+      const id = uuidv4();
+      const newSearch = { ...searchParams, id, searchType };
+      await updateUserDocument(user, 'savedSearches', newSearch, 'add');
     }
   };
 

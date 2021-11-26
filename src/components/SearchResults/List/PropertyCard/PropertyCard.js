@@ -81,9 +81,9 @@ const PropertyCard = ({ showMap, property }) => {
         }}
       >
         {isFavorite ? (
-          <FavoriteIcon className={classes.iconRed} />
+          <FavoriteIcon fontSize="large" className={classes.iconRed} />
         ) : (
-          <FavoriteBorderIcon />
+          <FavoriteBorderIcon fontSize="large" />
         )}
       </div>
       {property.is_new_construction && (
