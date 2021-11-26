@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     marginBottom: theme.spacing(2),
     margin: 'auto',
+    textTransform: 'none',
   },
+
   closeIconWrap: {
     marginLeft: 'auto',
   },

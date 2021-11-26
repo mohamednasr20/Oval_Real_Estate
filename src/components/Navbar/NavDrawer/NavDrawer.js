@@ -4,12 +4,16 @@ import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
 import useStyles from './styles';
 import { useTheme } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { handleChangeSearchType } from '../../../actions/globalState';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
   const theme = useTheme();
   const classes = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
@@ -21,38 +25,51 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
         <Link
           className={classes.link}
           to="/search"
-          onClick={() => setDrawerOpen(false)}
+          onClick={() => {
+            setDrawerOpen(false);
+            dispatch(handleChangeSearchType('list-for-sale'));
+          }}
         >
           Buy
         </Link>
         <Link
           className={classes.link}
           to="/search"
-          onClick={() => setDrawerOpen(false)}
+          onClick={() => {
+            setDrawerOpen(false);
+            dispatch(handleChangeSearchType('list-for-rent'));
+          }}
         >
           Rent
         </Link>
         <Link
           className={classes.link}
           to="/search"
-          onClick={() => setDrawerOpen(false)}
+          onClick={() => {
+            setDrawerOpen(false);
+            dispatch(handleChangeSearchType('list-sold'));
+          }}
         >
-          Home Loan
+          Sold
         </Link>
-        <Link
+        <Button
           className={classes.link}
-          to=""
-          onClick={() => setDrawerOpen(false)}
+          onClick={() => {
+            setDrawerOpen(false);
+            history.push('/savedHomes');
+          }}
         >
-          advertise
-        </Link>
-        <Link
+          Saved Homes
+        </Button>
+        <Button
           className={classes.link}
-          to=""
-          onClick={() => setDrawerOpen(false)}
+          onClick={() => {
+            setDrawerOpen(false);
+            history.push('/savedSearch');
+          }}
         >
-          Help
-        </Link>
+          Saved Searches
+        </Button>
         {isMobile && (
           <Button
             className={classes.authBtn}
