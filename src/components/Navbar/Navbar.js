@@ -34,6 +34,10 @@ const Navbar = () => {
   const classes = useStyles(location);
   const matchPropertyDetailes = useRouteMatch('/search/:id');
 
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -48,10 +52,6 @@ const Navbar = () => {
     logOut();
     history.push('/');
   };
-
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
   const changeBackground = () => {
     if (window.scrollY >= 30) {
@@ -110,7 +110,7 @@ const Navbar = () => {
                   </Button>
                 </div>
               )}
-            {isDesktop && location.pathname !== '/search' && (
+            {isDesktop && location.pathname === '/' && (
               <div>
                 <Link
                   to="/search"
