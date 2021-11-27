@@ -13,7 +13,7 @@ const initalState = {
     state_code: 'FL',
     city: 'Orlando',
     offset: '0',
-    limit: '20',
+    limit: '100',
     sort: 'relevance',
     beds_min: '',
     price_min: '',

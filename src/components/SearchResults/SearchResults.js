@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchFilter from './SearchFilter/SearchFilter';
 import List from './List/List';
-import Map from './Map/Map';
+import MapWrapped from './Map/WrappedMap';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -52,7 +52,7 @@ const SearchResults = () => {
               <List showMap={showMap} properties={properties} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <Map showMap={showMap} />
+              <MapWrapped showMap={showMap} />
             </Grid>
           </Grid>
         </>

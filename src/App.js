@@ -64,7 +64,7 @@ const App = () => {
           <Route path="/savedHomes">
             <SavedHomes />
           </Route>
-          <Route>
+          <Route path="/savedSearch">
             <SavedSearches />
           </Route>
         </Switch>

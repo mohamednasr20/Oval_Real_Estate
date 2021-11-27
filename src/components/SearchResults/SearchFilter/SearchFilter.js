@@ -154,7 +154,9 @@ const SearchFilter = ({ showMap, setShowMap }) => {
           control={
             <Switch
               checked={showMap}
-              onChange={() => setShowMap(!showMap)}
+              onChange={() => {
+                setShowMap(!showMap);
+              }}
               name="showMap"
               color="primary"
             />
