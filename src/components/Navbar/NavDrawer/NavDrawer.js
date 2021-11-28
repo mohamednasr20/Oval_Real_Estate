@@ -4,15 +4,17 @@ import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
 import useStyles from './styles';
 import { useTheme } from '@material-ui/core/styles';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { handleChangeSearchType } from '../../../actions/globalState';
+import {
+  handleChangeSearchType,
+  handleShowAuthModal,
+} from '../../../actions/globalState';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const NavDrawer = ({ drawerOpen, setDrawerOpen, handleSavedData }) => {
   const theme = useTheme();
   const classes = useStyles();
-  const history = useHistory();
   const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
@@ -75,6 +77,7 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen, handleSavedData }) => {
             className={classes.authBtn}
             variant="contained"
             color="primary"
+            onClick={() => dispatch(handleShowAuthModal(true))}
           >
             Sign up
           </Button>
