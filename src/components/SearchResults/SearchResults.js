@@ -47,7 +47,7 @@ const SearchResults = () => {
             Search Results <span>{location}</span>
           </Typography>
           <SearchFilter showMap={showMap} setShowMap={setShowMap} />
-          <Grid className={classes.resultsContainer} container spacing={3}>
+          <Grid className={classes.resultsContainer} container spacing={2}>
             <Grid item xs={12} md={showMap ? 8 : 12}>
               <List showMap={showMap} properties={properties} />
             </Grid>

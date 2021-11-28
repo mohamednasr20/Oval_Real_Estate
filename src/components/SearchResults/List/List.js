@@ -18,7 +18,8 @@ const List = ({ showMap, properties }) => {
           xs={12}
           sm={4}
           md={showMap ? 6 : 4}
-          lg={showMap ? 3 : 2}
+          lg={showMap ? 4 : 3}
+          xl={showMap ? 3 : 2}
         >
           <PropertyCard showMap={showMap} property={property} />
         </Grid>
