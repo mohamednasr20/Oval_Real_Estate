@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { handleChangeSearchType } from '../../../actions/globalState';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
+const NavDrawer = ({ drawerOpen, setDrawerOpen, handleSavedData }) => {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
@@ -56,7 +56,7 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
           className={classes.link}
           onClick={() => {
             setDrawerOpen(false);
-            history.push('/savedHomes');
+            handleSavedData('/savedSearches');
           }}
         >
           Saved Homes
@@ -65,7 +65,7 @@ const NavDrawer = ({ drawerOpen, setDrawerOpen }) => {
           className={classes.link}
           onClick={() => {
             setDrawerOpen(false);
-            history.push('/savedSearch');
+            handleSavedData('/savedHomes');
           }}
         >
           Saved Searches

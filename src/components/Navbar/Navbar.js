@@ -206,7 +206,11 @@ const Navbar = () => {
         </Container>
       </AppBar>
       {isTablet && (
-        <NavDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
+        <NavDrawer
+          drawerOpen={drawerOpen}
+          setDrawerOpen={setDrawerOpen}
+          handleSavedData={handleSavedData}
+        />
       )}
     </div>
   );

@@ -11,9 +11,9 @@ const initalState = {
   properties: [],
   searchParams: {
     state_code: 'FL',
-    city: 'Orlando',
+    city: 'Tampa',
     offset: '0',
-    limit: '100',
+    limit: '50',
     sort: 'relevance',
     beds_min: '',
     price_min: '',

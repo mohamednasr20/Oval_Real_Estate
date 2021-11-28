@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   loading: {
     textAlign: 'center',
-    marginTop: theme.spacing(6),
+    marginTop: theme.spacing(10),
     margin: 'auto',
   },
 }));

@@ -23,9 +23,9 @@ const Map = () => {
           center={{ lat: properties[10]?.lat, lng: properties[10]?.lon }}
         >
           {properties?.length &&
-            properties?.map((property) => (
+            properties?.map((property, i) => (
               <Marker
-                key={property.property_id}
+                key={i}
                 position={{
                   lat: property.lat,
                   lng: property.lon,

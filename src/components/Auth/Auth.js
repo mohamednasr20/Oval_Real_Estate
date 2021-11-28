@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { handleShowAuthModal } from '../../actions/globalState';
 import { signUp, login } from '../../firebase/auth';
+import LockIcon from '@material-ui/icons/Lock';
 import useStyles from './styles';
 
 const Auth = () => {
@@ -14,6 +15,7 @@ const Auth = () => {
   const dispatch = useDispatch();
   const showAuth = useSelector((state) => state.globalState.showAuth);
   const [isLogin, setIsLogin] = useState(false);
+  const [authError, setAuthError] = useState(null);
   const { handleSubmit, control, reset } = useForm();
 
   const onSubmit = async (data) => {
@@ -26,8 +28,9 @@ const Auth = () => {
         reset({ firstName: '', lastName: '', email: '', password: '' });
       }
       dispatch(handleShowAuthModal(false));
+      setAuthError(null);
     } catch (error) {
-      console.log(error);
+      setAuthError(error.code);
     }
   };
 
@@ -40,9 +43,20 @@ const Auth = () => {
         aria-describedby="simple-modal-description"
       >
         <form className={classes.paper} onSubmit={handleSubmit(onSubmit)}>
-          <Typography gutterBottom variant="h5">
-            {isLogin ? 'Log in' : 'Sign up'}
-          </Typography>
+          <div className={classes.heading}>
+            <LockIcon className={classes.lockIcon} fontSize="large" />
+            <Typography gutterBottom variant="h5">
+              {isLogin ? 'Log in' : 'Sign up'}
+            </Typography>
+          </div>
+          <div className={classes.authError}>
+            {authError === 'auth/user-not-found'
+              ? 'user not found'
+              : authError === 'auth/wrong-password'
+              ? 'wrong password'
+              : ''}
+          </div>
+
           {!isLogin && (
             <div className={classes.nameFields}>
               <Controller

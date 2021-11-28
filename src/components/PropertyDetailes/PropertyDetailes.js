@@ -193,7 +193,9 @@ const PropertyDetailes = () => {
             </Grid>
           </>
         ) : (
-          <CircularProgress className={classes.loading} />
+          <div className={classes.loading}>
+            <CircularProgress />
+          </div>
         )}
       </Container>
     </div>

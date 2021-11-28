@@ -37,7 +37,7 @@ const SearchResults = () => {
       {!isLoading ? (
         <>
           <Typography className={classes.subtitle} variant="subtitle1">
-            {`18 appear from ${properties?.length}  Results`}
+            {`${properties?.length} appear from 200 Results`}
           </Typography>
           <Typography
             className={classes.header}

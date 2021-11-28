@@ -9,17 +9,16 @@ const List = ({ showMap, properties }) => {
 
   const showPropertiesList =
     properties?.length &&
-    properties.map((property) => {
+    properties.map((property, i) => {
       return (
         <Grid
+          key={i}
           item
           style={{ margin: 'auto' }}
           xs={12}
           sm={4}
           md={showMap ? 6 : 4}
-          lg={showMap ? 4 : 3}
-          xl={showMap ? 3 : 2}
-          key={property?.property_id}
+          lg={showMap ? 3 : 2}
         >
           <PropertyCard showMap={showMap} property={property} />
         </Grid>
