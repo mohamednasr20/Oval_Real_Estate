@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { handleShowAuthModal } from '../../actions/globalState';
+import { signUp, login } from '../../firebase/auth';
+import LockIcon from '@material-ui/icons/Lock';
 import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
-import { handleShowAuthModal } from '../../actions/globalState';
-import { signUp, login } from '../../firebase/auth';
-import LockIcon from '@material-ui/icons/Lock';
+
 import useStyles from './styles';
 
 const Auth = () => {
