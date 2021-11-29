@@ -14,6 +14,7 @@
 ## Built With
 
 - React.js
+- Redux.js
 - firebase
 - Material-Ui
 
