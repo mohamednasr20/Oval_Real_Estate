@@ -14,12 +14,10 @@ const List = ({ showMap, properties }) => {
         <Grid
           key={i}
           item
-          style={{ margin: 'auto' }}
           xs={12}
           sm={4}
           md={showMap ? 6 : 4}
-          lg={showMap ? 4 : 3}
-          xl={showMap ? 3 : 2}
+          lg={showMap ? 3 : 2}
         >
           <PropertyCard showMap={showMap} property={property} />
         </Grid>
@@ -29,7 +27,7 @@ const List = ({ showMap, properties }) => {
   return (
     <>
       {properties?.length ? (
-        <Grid container spacing={2} className={classes.root}>
+        <Grid container spacing={1} className={classes.root}>
           {properties && showPropertiesList}
         </Grid>
       ) : (

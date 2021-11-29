@@ -18,9 +18,9 @@ const Map = () => {
     <div>
       {!isLoading ? (
         <GoogleMap
-          defaultZoom={10}
+          defaultZoom={11}
           defaultCenter={{ lat: 40.72289, lng: -73.802961 }}
-          center={{ lat: properties[10]?.lat, lng: properties[10]?.lon }}
+          center={{ lat: properties[25]?.lat, lng: properties[25]?.lon }}
         >
           {properties?.length &&
             properties?.map((property, i) => (

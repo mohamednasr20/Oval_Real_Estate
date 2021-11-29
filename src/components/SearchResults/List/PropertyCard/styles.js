@@ -4,19 +4,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     borderRadius: '10px',
-    width: 290,
     height: 346,
     marginBottom: theme.spacing(2),
     margin: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      width: 230,
-    },
-    [theme.breakpoints.up('md')]: {
-      width: 260,
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: 290,
-    },
   },
   media: {
     height: 180,

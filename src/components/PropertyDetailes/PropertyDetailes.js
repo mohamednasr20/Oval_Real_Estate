@@ -141,7 +141,7 @@ const PropertyDetailes = () => {
 
                 <Divider />
                 <div className={classes.pSection}>
-                  {property?.agents.length && (
+                  {property?.agents?.length && (
                     <div>
                       <Typography
                         className={classes.secondaryHeader}
