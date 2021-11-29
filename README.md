@@ -6,8 +6,6 @@
 
 ## Links
 
-- [Repo](https://github.com/mohamednasr20/Oval_Real_Estate "Oval_Real_Estate Repo")
-
 - [Live](https://oval-real-estate.web.app "Live View")
 
 
