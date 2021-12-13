@@ -1,7 +1,7 @@
 <h1>Oval Real Estate</h1>
 
 <p>
- Real Estate website for buying and selling houses  Any user can search for properties and see any property detailes registerd users only can save searches and save properties.
+ This application is a real estate website where users can come to find real estate to buy or rent, and user must authenticate to save search and houses.
 </p>
 
 ## Links
